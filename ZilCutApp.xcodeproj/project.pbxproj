@@ -1,0 +1,644 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */; };
+		8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF6279452B100FBCACE /* KesimViewController.swift */; };
+		8CE43BC0278B472800F95B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BBF278B472800F95B99 /* AppDelegate.swift */; };
+		8CE43BC2278B472800F95B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC1278B472800F95B99 /* SceneDelegate.swift */; };
+		8CE43BC4278B472800F95B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC3278B472800F95B99 /* ViewController.swift */; };
+		8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC8278B472800F95B99 /* ZilCutApp.xcdatamodeld */; };
+		8CE43BCC278B472C00F95B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE43BCB278B472C00F95B99 /* Assets.xcassets */; };
+		8CE43BCF278B472C00F95B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CE43BCD278B472C00F95B99 /* LaunchScreen.storyboard */; };
+		8CE43BDA278B472D00F95B99 /* ZilCutAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BD9278B472D00F95B99 /* ZilCutAppTests.swift */; };
+		8CE43BE4278B472D00F95B99 /* ZilCutAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BE3278B472D00F95B99 /* ZilCutAppUITests.swift */; };
+		8CE43BE6278B472D00F95B99 /* ZilCutAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BE5278B472D00F95B99 /* ZilCutAppUITestsLaunchTests.swift */; };
+		8CE583B5278C20E300570989 /* MaterialRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583B4278C20E300570989 /* MaterialRecord.swift */; };
+		8CE583B7278C20F400570989 /* CutRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583B6278C20F400570989 /* CutRecord.swift */; };
+		8CE583B9278C210200570989 /* MapRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583B8278C210200570989 /* MapRecord.swift */; };
+		8CE583BB278E916000570989 /* KesimYon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583BA278E916000570989 /* KesimYon.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CE43BD6278B472D00F95B99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CE43BB4278B472700F95B99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CE43BBB278B472800F95B99;
+			remoteInfo = ZilCutApp;
+		};
+		8CE43BE0278B472D00F95B99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CE43BB4278B472700F95B99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CE43BBB278B472800F95B99;
+			remoteInfo = ZilCutApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestRecognizer.swift; sourceTree = "<group>"; };
+		8C7D6AF6279452B100FBCACE /* KesimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimViewController.swift; sourceTree = "<group>"; };
+		8CE43BBC278B472800F95B99 /* ZilCutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZilCutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE43BBF278B472800F95B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8CE43BC1278B472800F95B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8CE43BC3278B472800F95B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CE43BC9278B472800F95B99 /* ZilCutApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZilCutApp.xcdatamodel; sourceTree = "<group>"; };
+		8CE43BCB278B472C00F95B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8CE43BCE278B472C00F95B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8CE43BD0278B472C00F95B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CE43BD5278B472D00F95B99 /* ZilCutAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZilCutAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE43BD9278B472D00F95B99 /* ZilCutAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZilCutAppTests.swift; sourceTree = "<group>"; };
+		8CE43BDF278B472D00F95B99 /* ZilCutAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZilCutAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE43BE3278B472D00F95B99 /* ZilCutAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZilCutAppUITests.swift; sourceTree = "<group>"; };
+		8CE43BE5278B472D00F95B99 /* ZilCutAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZilCutAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8CE583B4278C20E300570989 /* MaterialRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialRecord.swift; sourceTree = "<group>"; };
+		8CE583B6278C20F400570989 /* CutRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutRecord.swift; sourceTree = "<group>"; };
+		8CE583B8278C210200570989 /* MapRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRecord.swift; sourceTree = "<group>"; };
+		8CE583BA278E916000570989 /* KesimYon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimYon.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8CE43BB9278B472800F95B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE43BD2278B472D00F95B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE43BDC278B472D00F95B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CE43BB3278B472700F95B99 = {
+			isa = PBXGroup;
+			children = (
+				8CE43BBE278B472800F95B99 /* ZilCutApp */,
+				8CE43BD8278B472D00F95B99 /* ZilCutAppTests */,
+				8CE43BE2278B472D00F95B99 /* ZilCutAppUITests */,
+				8CE43BBD278B472800F95B99 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8CE43BBD278B472800F95B99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CE43BBC278B472800F95B99 /* ZilCutApp.app */,
+				8CE43BD5278B472D00F95B99 /* ZilCutAppTests.xctest */,
+				8CE43BDF278B472D00F95B99 /* ZilCutAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CE43BBE278B472800F95B99 /* ZilCutApp */ = {
+			isa = PBXGroup;
+			children = (
+				8CE583B3278C20D000570989 /* Models */,
+				8CE43BBF278B472800F95B99 /* AppDelegate.swift */,
+				8CE43BC1278B472800F95B99 /* SceneDelegate.swift */,
+				8CE43BC3278B472800F95B99 /* ViewController.swift */,
+				8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */,
+				8CE43BCB278B472C00F95B99 /* Assets.xcassets */,
+				8CE43BCD278B472C00F95B99 /* LaunchScreen.storyboard */,
+				8CE43BD0278B472C00F95B99 /* Info.plist */,
+				8CE43BC8278B472800F95B99 /* ZilCutApp.xcdatamodeld */,
+				8CE583BA278E916000570989 /* KesimYon.swift */,
+				8C7D6AF6279452B100FBCACE /* KesimViewController.swift */,
+			);
+			path = ZilCutApp;
+			sourceTree = "<group>";
+		};
+		8CE43BD8278B472D00F95B99 /* ZilCutAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CE43BD9278B472D00F95B99 /* ZilCutAppTests.swift */,
+			);
+			path = ZilCutAppTests;
+			sourceTree = "<group>";
+		};
+		8CE43BE2278B472D00F95B99 /* ZilCutAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8CE43BE3278B472D00F95B99 /* ZilCutAppUITests.swift */,
+				8CE43BE5278B472D00F95B99 /* ZilCutAppUITestsLaunchTests.swift */,
+			);
+			path = ZilCutAppUITests;
+			sourceTree = "<group>";
+		};
+		8CE583B3278C20D000570989 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8CE583B4278C20E300570989 /* MaterialRecord.swift */,
+				8CE583B6278C20F400570989 /* CutRecord.swift */,
+				8CE583B8278C210200570989 /* MapRecord.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8CE43BBB278B472800F95B99 /* ZilCutApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CE43BE9278B472D00F95B99 /* Build configuration list for PBXNativeTarget "ZilCutApp" */;
+			buildPhases = (
+				8CE43BB8278B472800F95B99 /* Sources */,
+				8CE43BB9278B472800F95B99 /* Frameworks */,
+				8CE43BBA278B472800F95B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZilCutApp;
+			productName = ZilCutApp;
+			productReference = 8CE43BBC278B472800F95B99 /* ZilCutApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8CE43BD4278B472D00F95B99 /* ZilCutAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CE43BEC278B472D00F95B99 /* Build configuration list for PBXNativeTarget "ZilCutAppTests" */;
+			buildPhases = (
+				8CE43BD1278B472D00F95B99 /* Sources */,
+				8CE43BD2278B472D00F95B99 /* Frameworks */,
+				8CE43BD3278B472D00F95B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CE43BD7278B472D00F95B99 /* PBXTargetDependency */,
+			);
+			name = ZilCutAppTests;
+			productName = ZilCutAppTests;
+			productReference = 8CE43BD5278B472D00F95B99 /* ZilCutAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8CE43BDE278B472D00F95B99 /* ZilCutAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CE43BEF278B472D00F95B99 /* Build configuration list for PBXNativeTarget "ZilCutAppUITests" */;
+			buildPhases = (
+				8CE43BDB278B472D00F95B99 /* Sources */,
+				8CE43BDC278B472D00F95B99 /* Frameworks */,
+				8CE43BDD278B472D00F95B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CE43BE1278B472D00F95B99 /* PBXTargetDependency */,
+			);
+			name = ZilCutAppUITests;
+			productName = ZilCutAppUITests;
+			productReference = 8CE43BDF278B472D00F95B99 /* ZilCutAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CE43BB4278B472700F95B99 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					8CE43BBB278B472800F95B99 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					8CE43BD4278B472D00F95B99 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 8CE43BBB278B472800F95B99;
+					};
+					8CE43BDE278B472D00F95B99 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 8CE43BBB278B472800F95B99;
+					};
+				};
+			};
+			buildConfigurationList = 8CE43BB7278B472700F95B99 /* Build configuration list for PBXProject "ZilCutApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8CE43BB3278B472700F95B99;
+			productRefGroup = 8CE43BBD278B472800F95B99 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CE43BBB278B472800F95B99 /* ZilCutApp */,
+				8CE43BD4278B472D00F95B99 /* ZilCutAppTests */,
+				8CE43BDE278B472D00F95B99 /* ZilCutAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8CE43BBA278B472800F95B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE43BCF278B472C00F95B99 /* LaunchScreen.storyboard in Resources */,
+				8CE43BCC278B472C00F95B99 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE43BD3278B472D00F95B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE43BDD278B472D00F95B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8CE43BB8278B472800F95B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE583BB278E916000570989 /* KesimYon.swift in Sources */,
+				8CE583B5278C20E300570989 /* MaterialRecord.swift in Sources */,
+				8CE43BC4278B472800F95B99 /* ViewController.swift in Sources */,
+				8CE583B9278C210200570989 /* MapRecord.swift in Sources */,
+				8CE43BC0278B472800F95B99 /* AppDelegate.swift in Sources */,
+				8CE583B7278C20F400570989 /* CutRecord.swift in Sources */,
+				8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */,
+				8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */,
+				8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */,
+				8CE43BC2278B472800F95B99 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE43BD1278B472D00F95B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE43BDA278B472D00F95B99 /* ZilCutAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE43BDB278B472D00F95B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE43BE4278B472D00F95B99 /* ZilCutAppUITests.swift in Sources */,
+				8CE43BE6278B472D00F95B99 /* ZilCutAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CE43BD7278B472D00F95B99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CE43BBB278B472800F95B99 /* ZilCutApp */;
+			targetProxy = 8CE43BD6278B472D00F95B99 /* PBXContainerItemProxy */;
+		};
+		8CE43BE1278B472D00F95B99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CE43BBB278B472800F95B99 /* ZilCutApp */;
+			targetProxy = 8CE43BE0278B472D00F95B99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CE43BCD278B472C00F95B99 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CE43BCE278B472C00F95B99 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8CE43BE7278B472D00F95B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8CE43BE8278B472D00F95B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8CE43BEA278B472D00F95B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92XM4656JU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZilCutApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burako.ZilCutApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8CE43BEB278B472D00F95B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92XM4656JU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZilCutApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burako.ZilCutApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8CE43BED278B472D00F95B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92XM4656JU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burako.ZilCutAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZilCutApp.app/ZilCutApp";
+			};
+			name = Debug;
+		};
+		8CE43BEE278B472D00F95B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92XM4656JU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burako.ZilCutAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZilCutApp.app/ZilCutApp";
+			};
+			name = Release;
+		};
+		8CE43BF0278B472D00F95B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92XM4656JU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burako.ZilCutAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ZilCutApp;
+			};
+			name = Debug;
+		};
+		8CE43BF1278B472D00F95B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92XM4656JU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burako.ZilCutAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ZilCutApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8CE43BB7278B472700F95B99 /* Build configuration list for PBXProject "ZilCutApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CE43BE7278B472D00F95B99 /* Debug */,
+				8CE43BE8278B472D00F95B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CE43BE9278B472D00F95B99 /* Build configuration list for PBXNativeTarget "ZilCutApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CE43BEA278B472D00F95B99 /* Debug */,
+				8CE43BEB278B472D00F95B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CE43BEC278B472D00F95B99 /* Build configuration list for PBXNativeTarget "ZilCutAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CE43BED278B472D00F95B99 /* Debug */,
+				8CE43BEE278B472D00F95B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CE43BEF278B472D00F95B99 /* Build configuration list for PBXNativeTarget "ZilCutAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CE43BF0278B472D00F95B99 /* Debug */,
+				8CE43BF1278B472D00F95B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8CE43BC8278B472800F95B99 /* ZilCutApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8CE43BC9278B472800F95B99 /* ZilCutApp.xcdatamodel */,
+			);
+			currentVersion = 8CE43BC9278B472800F95B99 /* ZilCutApp.xcdatamodel */;
+			path = ZilCutApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8CE43BB4278B472700F95B99 /* Project object */;
+}
