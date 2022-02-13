@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */; };
 		8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF6279452B100FBCACE /* KesimViewController.swift */; };
+		8CB6C4462796BEF9002F96EB /* NewCut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB6C4452796BEF9002F96EB /* NewCut.swift */; };
 		8CE43BC0278B472800F95B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BBF278B472800F95B99 /* AppDelegate.swift */; };
 		8CE43BC2278B472800F95B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC1278B472800F95B99 /* SceneDelegate.swift */; };
 		8CE43BC4278B472800F95B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC3278B472800F95B99 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestRecognizer.swift; sourceTree = "<group>"; };
 		8C7D6AF6279452B100FBCACE /* KesimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimViewController.swift; sourceTree = "<group>"; };
+		8CB6C4452796BEF9002F96EB /* NewCut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCut.swift; sourceTree = "<group>"; };
 		8CE43BBC278B472800F95B99 /* ZilCutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZilCutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE43BBF278B472800F95B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CE43BC1278B472800F95B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				8CE583B4278C20E300570989 /* MaterialRecord.swift */,
 				8CE583B6278C20F400570989 /* CutRecord.swift */,
 				8CE583B8278C210200570989 /* MapRecord.swift */,
+				8CB6C4452796BEF9002F96EB /* NewCut.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */,
 				8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */,
 				8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */,
+				8CB6C4462796BEF9002F96EB /* NewCut.swift in Sources */,
 				8CE43BC2278B472800F95B99 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

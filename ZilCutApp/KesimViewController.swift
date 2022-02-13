@@ -3,7 +3,10 @@ import Combine
 
 class KesimViewController: UIViewController {
   let kesim: KesimYon
+  let cutArray: [Cut]
   var vc: ViewController!
+  var checkMoreThanOne = false
+  var num = 0
   
   let headerLabel: UILabel = {
     let label = UILabel()
@@ -76,8 +79,29 @@ class KesimViewController: UIViewController {
     return button
   }()
   
-  init(kesim: KesimYon) {
+  let imageViewGreen: UIImageView = {
+    let imageView = UIImageView()
+    imageView.isUserInteractionEnabled = true
+    imageView.backgroundColor = .white
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.contentMode = .scaleToFill
+    imageView.image = UIColor(displayP3Red: 83/255, green: 165/255, blue: 154/255, alpha: 0.9).image()
+    return imageView
+  }()
+  
+  func anotherImageView() -> UIImageView {
+    let imageView = UIImageView()
+    imageView.isUserInteractionEnabled = true
+    imageView.backgroundColor = .white
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.contentMode = .scaleToFill
+    imageView.image = UIColor.blue.image()
+    return imageView
+  }
+  
+  init(kesim: KesimYon, cutArray: [Cut]) {
     self.kesim = kesim
+    self.cutArray = cutArray
     super.init(nibName: nil, bundle: .main)
   }
   
@@ -106,37 +130,45 @@ class KesimViewController: UIViewController {
     let height = UIScreen.main.bounds.height
     let width = UIScreen.main.bounds.width
     
-    headerLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: height * 0.05).isActive = true
-    headerLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.1).isActive = true
+    if cutArray.count > 1 {
+      for cut in cutArray {
+        if cut.kesimYon == kesim {
+          checkMoreThanOne = true
+        }
+      }
+    }
+    
+    headerLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: checkMoreThanOne ? height * 0.025 : height * 0.05).isActive = true
+    headerLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
     headerLabel.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.6).isActive = true
     headerLabel.centerXAnchor.constraint(equalTo: readGuide.centerXAnchor).isActive = true
     
     imageView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: height * 0.05).isActive = true
     imageView.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor).isActive = true
-    imageView.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.6).isActive = true
-    imageView.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.6).isActive = true
+    imageView.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: checkMoreThanOne ? 0.5 : 0.6).isActive = true
+    imageView.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: checkMoreThanOne ? 0.65 : 0.6).isActive = true
     
     kaydetButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: height * 0.05).isActive = true
     kaydetButton.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.1).isActive = true
     kaydetButton.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.6).isActive = true
     kaydetButton.centerXAnchor.constraint(equalTo: readGuide.centerXAnchor).isActive = true
     
-    xLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: height * 0.3).isActive = true
+    xLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: checkMoreThanOne ? height * 0.575 : height * 0.3).isActive = true
     xLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
-    xLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: width * 0.05).isActive = true
+    xLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: checkMoreThanOne ? width * 0.125 : width * 0.075).isActive = true
     xLabel.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.1).isActive = true
     
-    xTextField.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: height * 0.3).isActive = true
+    xTextField.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: checkMoreThanOne ? height * 0.575 : height * 0.3).isActive = true
     xTextField.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
     xTextField.leadingAnchor.constraint(equalTo: xLabel.trailingAnchor, constant: width * 0.05).isActive = true
     xTextField.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.2).isActive = true
     
-    yLabel.topAnchor.constraint(equalTo: xLabel.bottomAnchor, constant: height * 0.1).isActive = true
+    yLabel.topAnchor.constraint(equalTo: xLabel.bottomAnchor, constant: checkMoreThanOne ? height * 0.05 : height * 0.1).isActive = true
     yLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
-    yLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: width * 0.05).isActive = true
+    yLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: checkMoreThanOne ? width * 0.125 : width * 0.075).isActive = true
     yLabel.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.1).isActive = true
     
-    yTextField.topAnchor.constraint(equalTo: xTextField.bottomAnchor, constant: height * 0.1).isActive = true
+    yTextField.topAnchor.constraint(equalTo: xTextField.bottomAnchor, constant: checkMoreThanOne ? height * 0.05 : height * 0.1).isActive = true
     yTextField.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
     yTextField.leadingAnchor.constraint(equalTo: yLabel.trailingAnchor, constant: width * 0.05).isActive = true
     yTextField.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.2).isActive = true
@@ -157,22 +189,71 @@ class KesimViewController: UIViewController {
     default:
       print("Error")
     }
+    if checkMoreThanOne {
+      view.addSubview(imageViewGreen)
+      
+      imageViewGreen.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: height * 0.05).isActive = true
+      imageViewGreen.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
+      imageViewGreen.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: height * 0.05).isActive = true
+      imageViewGreen.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
+      
+      setupCutViews()
+    }
   }
   
   @objc private func tapped() {
-    if let n1 = NumberFormatter().number(from: xTextField.text!) {
-      let f = CGFloat(truncating: n1)
-      xArrayPublic.append(f)
+    guard let n1 = NumberFormatter().number(from: xTextField.text!), let n2 = NumberFormatter().number(from: yTextField.text!) else {
+      return
     }
+    let f1 = CGFloat(truncating: n1)
+    let f2 = CGFloat(truncating: n2)
+    publicCutArray.append(Cut(xStart: 0, yStart: 0, xEnd: f1, yEnd: f2, kesimYon: kesim))
     
-    if let n2 = NumberFormatter().number(from: yTextField.text!) {
-      let f = CGFloat(truncating: n2)
-      yArrayPublic.append(f)
-    }
-    kesimYonPublic.append(kesim)
-    
-    print("X = \(xArrayPublic), Y = \(yArrayPublic), Kesim = \(kesimYonPublic)")
-    vc = ViewController(xArray: xArrayPublic, yArray: yArrayPublic, kesimYonArray: kesimYonPublic)
+    vc = ViewController(cutArray: publicCutArray)
     self.navigationController?.pushViewController(vc, animated: true)
   }
+  
+  private func setupCutViews() {
+    var imageViewArray = [UIImageView]()
+    var numberViewArray = [UIImageView]()
+    for i in 1..<cutArray.count {
+      imageViewArray.append(anotherImageView())
+      let numberImageview = UIImageView(image: UIImage(named: "\(i)"))
+      numberImageview.translatesAutoresizingMaskIntoConstraints = false
+      numberViewArray.append(numberImageview)
+      if cutArray[i].kesimYon == kesim {
+        view.addSubview(imageViewArray[i-1])
+        view.addSubview(numberViewArray[i-1])
+        num += 1
+        switch kesim {
+        case .sagyukari:
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageViewGreen.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageViewGreen.topAnchor, constant: cutArray[i].yStart).isActive = true
+        case .solyukari:
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageViewGreen.leadingAnchor, constant: cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageViewGreen.topAnchor, constant: cutArray[i].yStart).isActive = true
+        case .solasagi:
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageViewGreen.leadingAnchor, constant: cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+        case .sagasagi:
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageViewGreen.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+        default:
+          break
+        }
+        imageViewArray[i-1].widthAnchor.constraint(equalTo: imageViewGreen.widthAnchor, multiplier: (cutArray[i].xEnd - cutArray[i].xStart)  / cutArray[0].xEnd).isActive = true
+        imageViewArray[i-1].heightAnchor.constraint(equalTo: imageViewGreen.heightAnchor, multiplier: (cutArray[i].yEnd - cutArray[i].yStart) / cutArray[0].yEnd).isActive = true
+        
+        numberViewArray[i-1].centerXAnchor.constraint(equalTo: imageViewArray[i-1].centerXAnchor).isActive = true
+        numberViewArray[i-1].centerYAnchor.constraint(equalTo: imageViewArray[i-1].centerYAnchor).isActive = true
+        numberViewArray[i-1].widthAnchor.constraint(equalTo: imageViewArray[i-1].widthAnchor, multiplier: 0.2).isActive = true
+        numberViewArray[i-1].heightAnchor.constraint(equalTo: imageViewArray[i-1].heightAnchor, multiplier: 0.8).isActive = true
+      }
+    }
+  }
+  
+  func setupNumberViews(_ count: Int) {
+    
+  }
 }
+

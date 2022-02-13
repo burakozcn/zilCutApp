@@ -1,10 +1,6 @@
 import Foundation
 import UIKit
 
-public var xArrayPublic: [CGFloat] = [3000]
-public var yArrayPublic: [CGFloat] = [200000]
-public var kesimYonPublic = [KesimYon]()
-
 struct CutRecord {
   let id: Int
   let partyNumber: String

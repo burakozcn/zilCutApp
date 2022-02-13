@@ -2,12 +2,19 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  let xArray: [CGFloat]
-  let yArray: [CGFloat]
-  let kesimYonArray: [KesimYon]
+  let cutArray: [Cut]
   var initialCenter: CGPoint = .zero
   var lastCenter: CGPoint = .zero
   var kesimVC: KesimViewController!
+  
+  var solUstX: CGFloat = 0
+  var solUstY: CGFloat = 0
+  var sagUstX: CGFloat = 0
+  var sagUstY: CGFloat = 0
+  var solAltX: CGFloat = 0
+  var solAltY: CGFloat = 0
+  var sagAltX: CGFloat = 0
+  var sagAltY: CGFloat = 0
   
   let imageView: UIImageView = {
     let imageView = UIImageView()
@@ -36,10 +43,8 @@ class ViewController: UIViewController {
     return imageView
   }
   
-  init(xArray: [CGFloat], yArray: [CGFloat], kesimYonArray: [KesimYon]) {
-    self.xArray = xArray
-    self.yArray = yArray
-    self.kesimYonArray = kesimYonArray
+  init(cutArray: [Cut]) {
+    self.cutArray = cutArray
     super.init(nibName: nil, bundle: .main)
   }
   
@@ -63,30 +68,37 @@ class ViewController: UIViewController {
     imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
     imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8).isActive = true
     
-    if xArray.count > 1 && yArray.count > 1 && kesimYonArray.count > 0 {
+    if cutArray.count > 1 {
       var imageViewArray = [UIImageView]()
-      for i in 0..<kesimYonArray.count {
-        let j = i + 1
+      for i in 1..<cutArray.count {
         imageViewArray.append(anotherImageView())
-        view.addSubview(imageViewArray[i])
-        switch kesimYonArray[i] {
+        view.addSubview(imageViewArray[i-1])
+        switch cutArray[i].kesimYon {
         case .sagyukari:
-          imageViewArray[i].trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
-          imageViewArray[i].topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: cutArray[i].yStart).isActive = true
+          sagUstX = cutArray[i].xEnd
+          sagUstY = cutArray[i].yEnd
         case .solyukari:
-          imageViewArray[i].leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
-          imageViewArray[i].topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: cutArray[i].yStart).isActive = true
+          solUstX = cutArray[i].xEnd
+          solUstY = cutArray[i].yEnd
         case .solasagi:
-          imageViewArray[i].leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
-          imageViewArray[i].bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+          solAltX = cutArray[i].xEnd
+          solAltY = cutArray[i].yEnd
         case .sagasagi:
-          imageViewArray[i].trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
-          imageViewArray[i].bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+          sagAltX = cutArray[i].xEnd
+          sagAltY = cutArray[i].yEnd
         default:
           break
         }
-        imageViewArray[i].widthAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: xArray[j]  / xArray[0]).isActive = true
-        imageViewArray[i].heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: yArray[j] / yArray[0]).isActive = true
+        imageViewArray[i-1].widthAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: (cutArray[i].xEnd - cutArray[i].xStart)  / cutArray[0].xEnd).isActive = true
+        imageViewArray[i-1].heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: (cutArray[i].yEnd - cutArray[i].yStart) / cutArray[0].yEnd).isActive = true
       }
     }
   }
@@ -108,7 +120,7 @@ class ViewController: UIViewController {
   }
   
   private func goToPages(fx: CGFloat, fy: CGFloat, lx: CGFloat, ly: CGFloat) {
-    if fx < 50 {
+    if fx < imageView.bounds.size.width / 12 {
       if ly > 0 {
         print("Sol aşağıdan kesim")
         goToKesimVC(kesimYon: .solasagi)
@@ -116,7 +128,7 @@ class ViewController: UIViewController {
         print("Sol yukarıdan kesim")
         goToKesimVC(kesimYon: .solyukari)
       }
-    } else if fy < 50 {
+    } else if fy < imageView.bounds.size.height / 16 {
       if lx > 0 {
         print("Sag yukaridan kesim")
         goToKesimVC(kesimYon: .sagyukari)
@@ -124,7 +136,7 @@ class ViewController: UIViewController {
         print("Sol yukaridan kesim")
         goToKesimVC(kesimYon: .solyukari)
       }
-    } else if fx > 600 {
+    } else if fx > imageView.bounds.size.width * 0.9 {
       if ly > 0 {
         print("Sag asagidan kesim")
         goToKesimVC(kesimYon: .sagasagi)
@@ -132,7 +144,7 @@ class ViewController: UIViewController {
         print("Sag yukaridan kesim")
         goToKesimVC(kesimYon: .sagyukari)
       }
-    } else if fy > 800 {
+    } else if fy > imageView.bounds.size.height * 0.92 {
       if lx > 0 {
         print("Sag asagidan kesim")
         goToKesimVC(kesimYon: .sagasagi)
@@ -147,10 +159,10 @@ class ViewController: UIViewController {
   
   private func errorCheck(fx: Double, fy: Double, lx: Double, ly: Double) -> Bool {
     var error = false
-    if (fx < 50 && fy < 50) || (fx > 600 && fy > 800) {
+    if (fx < imageView.bounds.size.width / 12 && fy < imageView.bounds.size.height / 16) || (fx > imageView.bounds.size.width * 0.9 && fy > imageView.bounds.size.height * 0.92) {
       print("First Error, FX = \(fx), FY = \(fy)")
       error = true
-    } else if (fx < 50 && lx < 50) || (fy < 50 && ly < 0) || (fy > 800 && ly > 0) {
+    } else if (fx < imageView.bounds.size.width / 12 && lx < imageView.bounds.size.width / 12) || (fy < imageView.bounds.size.height / 16 && ly < 0) || (fy > imageView.bounds.size.width * 0.9 && ly > 0) {
       print("Second Error FX = \(fx), FY = \(fy), LX = \(lx), LY = \(ly) ")
       error = true
     }
@@ -158,7 +170,7 @@ class ViewController: UIViewController {
   }
   
   private func goToKesimVC(kesimYon: KesimYon) {
-    kesimVC = KesimViewController(kesim: kesimYon)
+    kesimVC = KesimViewController(kesim: kesimYon, cutArray: cutArray)
     self.navigationController?.pushViewController(kesimVC, animated: true)
   }
 }

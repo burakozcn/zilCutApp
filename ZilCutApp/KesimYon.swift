@@ -8,6 +8,7 @@ public enum KesimYon {
   case sagasagi
   case dikey
   case yatay
+  case start
 }
 
 extension UIColor {
