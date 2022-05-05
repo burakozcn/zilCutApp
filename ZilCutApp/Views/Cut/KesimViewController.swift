@@ -1,12 +1,18 @@
 import UIKit
 import Combine
 
-class KesimViewController: UIViewController {
+class KesimViewController: UIViewController, UITextFieldDelegate {
+  var pickerDataSource: [String] = []
+  var pickerMap: [Int] = []
+  
   let kesim: KesimYon
   let cutArray: [Cut]
-  var vc: ViewController!
+  var vc: MaterialViewController!
   var checkMoreThanOne = false
   var num = 0
+  var pickerView: UIPickerView!
+  var xStart: CGFloat = 0
+  var yStart: CGFloat = 0
   
   let headerLabel: UILabel = {
     let label = UILabel()
@@ -87,6 +93,17 @@ class KesimViewController: UIViewController {
     imageView.contentMode = .scaleToFill
     imageView.image = UIColor(displayP3Red: 83/255, green: 165/255, blue: 154/255, alpha: 0.9).image()
     return imageView
+  }()
+  
+  let textField: UITextField = {
+    let textField = UITextField()
+    textField.translatesAutoresizingMaskIntoConstraints = false
+    textField.isUserInteractionEnabled = true
+    textField.placeholder = "Kesim Yeri Seçim"
+    textField.keyboardType = .default
+    textField.backgroundColor = .white
+    textField.text = ""
+    return textField
   }()
   
   func anotherImageView() -> UIImageView {
@@ -198,6 +215,9 @@ class KesimViewController: UIViewController {
       imageViewGreen.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
       
       setupCutViews()
+      setupPickerView()
+      setupTextField()
+      pickerViewNum(num)
     }
   }
   
@@ -207,15 +227,19 @@ class KesimViewController: UIViewController {
     }
     let f1 = CGFloat(truncating: n1)
     let f2 = CGFloat(truncating: n2)
-    publicCutArray.append(Cut(xStart: 0, yStart: 0, xEnd: f1, yEnd: f2, kesimYon: kesim))
+    publicCutArray.append(Cut(xStart: xStart, yStart: yStart, xEnd: (xStart + f1), yEnd: (yStart + f2), kesimYon: kesim))
     
-    vc = ViewController(cutArray: publicCutArray)
+    vc = MaterialViewController(cutArray: publicCutArray)
     self.navigationController?.pushViewController(vc, animated: true)
   }
   
   private func setupCutViews() {
     var imageViewArray = [UIImageView]()
     var numberViewArray = [UIImageView]()
+    
+    let height = UIScreen.main.bounds.height
+    let width = UIScreen.main.bounds.width
+    
     for i in 1..<cutArray.count {
       imageViewArray.append(anotherImageView())
       let numberImageview = UIImageView(image: UIImage(named: "\(i)"))
@@ -227,17 +251,17 @@ class KesimViewController: UIViewController {
         num += 1
         switch kesim {
         case .sagyukari:
-          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageViewGreen.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].topAnchor.constraint(equalTo: imageViewGreen.topAnchor, constant: cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageViewGreen.trailingAnchor, constant: (-cutArray[i].xStart / cutArray[0].xEnd) * width * 0.4).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageViewGreen.topAnchor, constant: (cutArray[i].yStart / cutArray[0].yEnd) * height * 0.3).isActive = true
         case .solyukari:
-          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageViewGreen.leadingAnchor, constant: cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].topAnchor.constraint(equalTo: imageViewGreen.topAnchor, constant: cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageViewGreen.leadingAnchor, constant: (cutArray[i].xStart / cutArray[0].xEnd) * width * 0.4).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageViewGreen.topAnchor, constant: (cutArray[i].yStart / cutArray[0].yEnd) * height * 0.3).isActive = true
         case .solasagi:
-          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageViewGreen.leadingAnchor, constant: cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageViewGreen.leadingAnchor, constant: (cutArray[i].xStart / cutArray[0].xEnd) * width * 0.4).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: (-cutArray[i].yStart / cutArray[0].yEnd) * height * 0.3).isActive = true
         case .sagasagi:
-          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageViewGreen.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageViewGreen.trailingAnchor, constant: (-cutArray[i].xStart / cutArray[0].xEnd) * width * 0.4).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: (-cutArray[i].yStart / cutArray[0].yEnd) * height * 0.3).isActive = true
         default:
           break
         }
@@ -252,8 +276,73 @@ class KesimViewController: UIViewController {
     }
   }
   
-  func setupNumberViews(_ count: Int) {
+  func setupTextField() {
+    textField.delegate = self
     
+    view.addSubview(textField)
+    let height = UIScreen.main.bounds.height
+    
+    textField.widthAnchor.constraint(equalTo: imageViewGreen.widthAnchor).isActive = true
+    textField.centerXAnchor.constraint(equalTo: imageViewGreen.centerXAnchor).isActive = true
+    textField.topAnchor.constraint(equalTo: imageViewGreen.bottomAnchor, constant: height * 0.025).isActive = true
+    textField.heightAnchor.constraint(equalToConstant: height * 0.1).isActive = true
+  }
+  
+  func setupPickerView(){
+    pickerView = MyPickerView()
+    
+    pickerView.delegate = self
+    pickerView.dataSource = self
+    
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
+    let doneButton = UIBarButtonItem(title: NSLocalizedString("Tamam", comment: "Done"), style: .plain, target: self, action: #selector(donedatePicker))
+    let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+    let cancelButton = UIBarButtonItem(title: NSLocalizedString("İptal", comment: "Cancel"), style: .plain, target: self, action: #selector(cancelDatePicker))
+    
+    toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+    
+    textField.inputAccessoryView = toolbar
+    textField.inputView = pickerView
+  }
+  
+  func pickerViewNum(_ number: Int) {
+    for i in 0..<number {
+      pickerDataSource.append("\(i + 1)" + " - Yan")
+      pickerDataSource.append("\(i + 1)" + " - Alt")
+      pickerMap.append(i + 1)
+      pickerMap.append((i + 1) * 10)
+    }
+  }
+  
+  private func calcStarts(_ text: String?) {
+    var num: Int = 0
+    var pos: String = ""
+    
+    if let str = text {
+      num = Int(str.prefix(1))!
+      pos = String(str.suffix(3))
+    }
+    
+    if pos == "Yan" {
+      xStart = publicCutArray[num].xEnd
+    } else if pos == "Alt" {
+      yStart = publicCutArray[num].yEnd
+    }
+  }
+  
+  @objc func donedatePicker() {
+    let component = 0
+    
+    let row = pickerView.selectedRow(inComponent: component)
+    textField.text = pickerView.delegate?.pickerView?(pickerView, titleForRow: row, forComponent: component)
+    
+    self.view.endEditing(true)
+    calcStarts(textField.text)
+  }
+  
+  @objc func cancelDatePicker() {
+    self.view.endEditing(true)
   }
 }
 

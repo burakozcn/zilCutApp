@@ -7,12 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C00D0B628146240003BB08B /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C00D0B528146240003BB08B /* BaseCoordinator.swift */; };
+		8C0ED44F27E0AEEB0079148D /* NetworkManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0ED44E27E0AEEB0079148D /* NetworkManagement.swift */; };
+		8C3844B5281D8BC50014140B /* StartProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3844B3281D8BC50014140B /* StartProductTableViewCell.swift */; };
+		8C3844B6281D8BC50014140B /* StartProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3844B4281D8BC50014140B /* StartProductTableViewCell.xib */; };
+		8C45B0162812DDD400BEB794 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45B0152812DDD400BEB794 /* StartViewController.swift */; };
+		8C57C74A27CE221200E1A357 /* KesimViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57C74927CE221200E1A357 /* KesimViewExt.swift */; };
+		8C7054FD281E771E006F68CB /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7054FC281E771E006F68CB /* UITextFieldExt.swift */; };
 		8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */; };
 		8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF6279452B100FBCACE /* KesimViewController.swift */; };
 		8CB6C4462796BEF9002F96EB /* NewCut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB6C4452796BEF9002F96EB /* NewCut.swift */; };
+		8CBA0D2E28191C7B0006185F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D2D28191C7B0006185F /* AppCoordinator.swift */; };
+		8CBA0D3628191E2F0006185F /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3528191E2F0006185F /* StartViewModel.swift */; };
+		8CBA0D3828191E3A0006185F /* StartViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3728191E3A0006185F /* StartViewCoordinator.swift */; };
+		8CBA0D3A28191E8F0006185F /* MaterialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3928191E8F0006185F /* MaterialViewModel.swift */; };
+		8CBA0D3C28191EBC0006185F /* MaterialViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3B28191EBC0006185F /* MaterialViewCoordinator.swift */; };
+		8CBDEF7F27BA9AEF009589A5 /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBDEF7E27BA9AEF009589A5 /* MyPickerView.swift */; };
 		8CE43BC0278B472800F95B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BBF278B472800F95B99 /* AppDelegate.swift */; };
 		8CE43BC2278B472800F95B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC1278B472800F95B99 /* SceneDelegate.swift */; };
-		8CE43BC4278B472800F95B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC3278B472800F95B99 /* ViewController.swift */; };
+		8CE43BC4278B472800F95B99 /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC3278B472800F95B99 /* MaterialViewController.swift */; };
 		8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CE43BC8278B472800F95B99 /* ZilCutApp.xcdatamodeld */; };
 		8CE43BCC278B472C00F95B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE43BCB278B472C00F95B99 /* Assets.xcassets */; };
 		8CE43BCF278B472C00F95B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CE43BCD278B472C00F95B99 /* LaunchScreen.storyboard */; };
@@ -23,6 +36,11 @@
 		8CE583B7278C20F400570989 /* CutRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583B6278C20F400570989 /* CutRecord.swift */; };
 		8CE583B9278C210200570989 /* MapRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583B8278C210200570989 /* MapRecord.swift */; };
 		8CE583BB278E916000570989 /* KesimYon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE583BA278E916000570989 /* KesimYon.swift */; };
+		8CFA42AF281FC23A004859F7 /* BeltNames+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFA42AD281FC23A004859F7 /* BeltNames+CoreDataClass.swift */; };
+		8CFA42B0281FC23A004859F7 /* BeltNames+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFA42AE281FC23A004859F7 /* BeltNames+CoreDataProperties.swift */; };
+		8CFA42B3281FC835004859F7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFA42B2281FC835004859F7 /* Persistence.swift */; };
+		8CFA42B528214268004859F7 /* StartProductTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFA42B428214268004859F7 /* StartProductTableViewDataSource.swift */; };
+		8CFA42B728214B83004859F7 /* StartViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFA42B628214B83004859F7 /* StartViewControllerExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +61,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C00D0B528146240003BB08B /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		8C0ED44E27E0AEEB0079148D /* NetworkManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagement.swift; sourceTree = "<group>"; };
+		8C3844B3281D8BC50014140B /* StartProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartProductTableViewCell.swift; sourceTree = "<group>"; };
+		8C3844B4281D8BC50014140B /* StartProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartProductTableViewCell.xib; sourceTree = "<group>"; };
+		8C45B0152812DDD400BEB794 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		8C57C74927CE221200E1A357 /* KesimViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimViewExt.swift; sourceTree = "<group>"; };
+		8C7054FC281E771E006F68CB /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestRecognizer.swift; sourceTree = "<group>"; };
 		8C7D6AF6279452B100FBCACE /* KesimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimViewController.swift; sourceTree = "<group>"; };
 		8CB6C4452796BEF9002F96EB /* NewCut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCut.swift; sourceTree = "<group>"; };
+		8CBA0D2D28191C7B0006185F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		8CBA0D3528191E2F0006185F /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		8CBA0D3728191E3A0006185F /* StartViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewCoordinator.swift; sourceTree = "<group>"; };
+		8CBA0D3928191E8F0006185F /* MaterialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewModel.swift; sourceTree = "<group>"; };
+		8CBA0D3B28191EBC0006185F /* MaterialViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewCoordinator.swift; sourceTree = "<group>"; };
+		8CBDEF7E27BA9AEF009589A5 /* MyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
 		8CE43BBC278B472800F95B99 /* ZilCutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZilCutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE43BBF278B472800F95B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CE43BC1278B472800F95B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8CE43BC3278B472800F95B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CE43BC3278B472800F95B99 /* MaterialViewController.swift */ = {isa = PBXFileReference; indentWidth = 1; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		8CE43BC9278B472800F95B99 /* ZilCutApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZilCutApp.xcdatamodel; sourceTree = "<group>"; };
 		8CE43BCB278B472C00F95B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CE43BCE278B472C00F95B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +94,11 @@
 		8CE583B6278C20F400570989 /* CutRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutRecord.swift; sourceTree = "<group>"; };
 		8CE583B8278C210200570989 /* MapRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRecord.swift; sourceTree = "<group>"; };
 		8CE583BA278E916000570989 /* KesimYon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimYon.swift; sourceTree = "<group>"; };
+		8CFA42AD281FC23A004859F7 /* BeltNames+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeltNames+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8CFA42AE281FC23A004859F7 /* BeltNames+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeltNames+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8CFA42B2281FC835004859F7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		8CFA42B428214268004859F7 /* StartProductTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartProductTableViewDataSource.swift; sourceTree = "<group>"; };
+		8CFA42B628214B83004859F7 /* StartViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewControllerExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +126,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CBA0D2A281883150006185F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8CE43BBF278B472800F95B99 /* AppDelegate.swift */,
+				8CE43BC1278B472800F95B99 /* SceneDelegate.swift */,
+				8C00D0B528146240003BB08B /* BaseCoordinator.swift */,
+				8CBA0D2D28191C7B0006185F /* AppCoordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8CBA0D2B2818831B0006185F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8CBA0D2F28191CA00006185F /* Start */,
+				8CBA0D3028191CA80006185F /* Material */,
+				8CBA0D3128191CBC0006185F /* Cut */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8CBA0D2C2818832C0006185F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8CFA42B1281FC826004859F7 /* CoreData */,
+				8CBA0D3428191CF80006185F /* Protocols+Classes+Enums */,
+				8CBA0D3328191CE40006185F /* Extensions */,
+				8CBA0D3228191CDB0006185F /* Networking */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8CBA0D2F28191CA00006185F /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				8C45B0152812DDD400BEB794 /* StartViewController.swift */,
+				8CFA42B628214B83004859F7 /* StartViewControllerExt.swift */,
+				8CBA0D3528191E2F0006185F /* StartViewModel.swift */,
+				8CBA0D3728191E3A0006185F /* StartViewCoordinator.swift */,
+				8CFA42B428214268004859F7 /* StartProductTableViewDataSource.swift */,
+				8C3844B3281D8BC50014140B /* StartProductTableViewCell.swift */,
+				8C3844B4281D8BC50014140B /* StartProductTableViewCell.xib */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		8CBA0D3028191CA80006185F /* Material */ = {
+			isa = PBXGroup;
+			children = (
+				8CE43BC3278B472800F95B99 /* MaterialViewController.swift */,
+				8CBA0D3928191E8F0006185F /* MaterialViewModel.swift */,
+				8CBA0D3B28191EBC0006185F /* MaterialViewCoordinator.swift */,
+			);
+			path = Material;
+			sourceTree = "<group>";
+		};
+		8CBA0D3128191CBC0006185F /* Cut */ = {
+			isa = PBXGroup;
+			children = (
+				8C7D6AF6279452B100FBCACE /* KesimViewController.swift */,
+				8C57C74927CE221200E1A357 /* KesimViewExt.swift */,
+			);
+			path = Cut;
+			sourceTree = "<group>";
+		};
+		8CBA0D3228191CDB0006185F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8C0ED44E27E0AEEB0079148D /* NetworkManagement.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8CBA0D3328191CE40006185F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C7054FC281E771E006F68CB /* UITextFieldExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8CBA0D3428191CF80006185F /* Protocols+Classes+Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8CE583BA278E916000570989 /* KesimYon.swift */,
+				8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */,
+				8CBDEF7E27BA9AEF009589A5 /* MyPickerView.swift */,
+			);
+			path = "Protocols+Classes+Enums";
+			sourceTree = "<group>";
+		};
 		8CE43BB3278B472700F95B99 = {
 			isa = PBXGroup;
 			children = (
@@ -113,17 +240,14 @@
 		8CE43BBE278B472800F95B99 /* ZilCutApp */ = {
 			isa = PBXGroup;
 			children = (
+				8CBA0D2A281883150006185F /* App */,
+				8CBA0D2B2818831B0006185F /* Views */,
 				8CE583B3278C20D000570989 /* Models */,
-				8CE43BBF278B472800F95B99 /* AppDelegate.swift */,
-				8CE43BC1278B472800F95B99 /* SceneDelegate.swift */,
-				8CE43BC3278B472800F95B99 /* ViewController.swift */,
-				8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */,
+				8CBA0D2C2818832C0006185F /* Service */,
 				8CE43BCB278B472C00F95B99 /* Assets.xcassets */,
 				8CE43BCD278B472C00F95B99 /* LaunchScreen.storyboard */,
 				8CE43BD0278B472C00F95B99 /* Info.plist */,
 				8CE43BC8278B472800F95B99 /* ZilCutApp.xcdatamodeld */,
-				8CE583BA278E916000570989 /* KesimYon.swift */,
-				8C7D6AF6279452B100FBCACE /* KesimViewController.swift */,
 			);
 			path = ZilCutApp;
 			sourceTree = "<group>";
@@ -148,12 +272,22 @@
 		8CE583B3278C20D000570989 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8CFA42AD281FC23A004859F7 /* BeltNames+CoreDataClass.swift */,
+				8CFA42AE281FC23A004859F7 /* BeltNames+CoreDataProperties.swift */,
 				8CE583B4278C20E300570989 /* MaterialRecord.swift */,
 				8CE583B6278C20F400570989 /* CutRecord.swift */,
 				8CE583B8278C210200570989 /* MapRecord.swift */,
 				8CB6C4452796BEF9002F96EB /* NewCut.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8CFA42B1281FC826004859F7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8CFA42B2281FC835004859F7 /* Persistence.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3844B6281D8BC50014140B /* StartProductTableViewCell.xib in Resources */,
 				8CE43BCF278B472C00F95B99 /* LaunchScreen.storyboard in Resources */,
 				8CE43BCC278B472C00F95B99 /* Assets.xcassets in Resources */,
 			);
@@ -286,16 +421,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBA0D3828191E3A0006185F /* StartViewCoordinator.swift in Sources */,
+				8CBA0D3A28191E8F0006185F /* MaterialViewModel.swift in Sources */,
+				8C3844B5281D8BC50014140B /* StartProductTableViewCell.swift in Sources */,
 				8CE583BB278E916000570989 /* KesimYon.swift in Sources */,
 				8CE583B5278C20E300570989 /* MaterialRecord.swift in Sources */,
-				8CE43BC4278B472800F95B99 /* ViewController.swift in Sources */,
+				8CBA0D2E28191C7B0006185F /* AppCoordinator.swift in Sources */,
+				8CE43BC4278B472800F95B99 /* MaterialViewController.swift in Sources */,
 				8CE583B9278C210200570989 /* MapRecord.swift in Sources */,
+				8CBDEF7F27BA9AEF009589A5 /* MyPickerView.swift in Sources */,
+				8CFA42B3281FC835004859F7 /* Persistence.swift in Sources */,
+				8C00D0B628146240003BB08B /* BaseCoordinator.swift in Sources */,
+				8C45B0162812DDD400BEB794 /* StartViewController.swift in Sources */,
 				8CE43BC0278B472800F95B99 /* AppDelegate.swift in Sources */,
+				8CFA42B0281FC23A004859F7 /* BeltNames+CoreDataProperties.swift in Sources */,
+				8C57C74A27CE221200E1A357 /* KesimViewExt.swift in Sources */,
 				8CE583B7278C20F400570989 /* CutRecord.swift in Sources */,
+				8C7054FD281E771E006F68CB /* UITextFieldExt.swift in Sources */,
 				8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */,
 				8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */,
+				8CBA0D3628191E2F0006185F /* StartViewModel.swift in Sources */,
 				8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */,
+				8CBA0D3C28191EBC0006185F /* MaterialViewCoordinator.swift in Sources */,
 				8CB6C4462796BEF9002F96EB /* NewCut.swift in Sources */,
+				8CFA42B728214B83004859F7 /* StartViewControllerExt.swift in Sources */,
+				8CFA42AF281FC23A004859F7 /* BeltNames+CoreDataClass.swift in Sources */,
+				8CFA42B528214268004859F7 /* StartProductTableViewDataSource.swift in Sources */,
+				8C0ED44F27E0AEEB0079148D /* NetworkManagement.swift in Sources */,
 				8CE43BC2278B472800F95B99 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

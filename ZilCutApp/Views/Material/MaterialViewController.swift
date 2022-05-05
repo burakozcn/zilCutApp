@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class MaterialViewController: UIViewController {
   
   let cutArray: [Cut]
   var initialCenter: CGPoint = .zero
@@ -63,6 +63,9 @@ class ViewController: UIViewController {
     panGestureRecognizer.addTarget(self, action: #selector(panned))
     imageView.addGestureRecognizer(panGestureRecognizer)
     
+    let height = UIScreen.main.bounds.height
+    let width = UIScreen.main.bounds.width
+    
     imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
@@ -75,23 +78,23 @@ class ViewController: UIViewController {
         view.addSubview(imageViewArray[i-1])
         switch cutArray[i].kesimYon {
         case .sagyukari:
-          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: (-cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: (cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
           sagUstX = cutArray[i].xEnd
           sagUstY = cutArray[i].yEnd
         case .solyukari:
-          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: (cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
+          imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: (cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
           solUstX = cutArray[i].xEnd
           solUstY = cutArray[i].yEnd
         case .solasagi:
-          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: (cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: (-cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
           solAltX = cutArray[i].xEnd
           solAltY = cutArray[i].yEnd
         case .sagasagi:
-          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -cutArray[i].xStart).isActive = true
-          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -cutArray[i].yStart).isActive = true
+          imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: (-cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
+          imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: (-cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
           sagAltX = cutArray[i].xEnd
           sagAltY = cutArray[i].yEnd
         default:
