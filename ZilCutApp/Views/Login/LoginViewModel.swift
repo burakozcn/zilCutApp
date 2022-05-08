@@ -1,6 +1,6 @@
 import UIKit
 import Combine
 
-class StartViewModel {
+class LoginViewModel {
   
 }

@@ -1,6 +1,6 @@
 import UIKit
 
-class StartProductTableViewCell: UITableViewCell {
+class CreateProductTableViewCell: UITableViewCell {
   @IBOutlet weak var label: UILabel!
   
   override func awakeFromNib() {

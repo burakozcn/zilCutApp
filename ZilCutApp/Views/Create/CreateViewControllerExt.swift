@@ -1,8 +1,8 @@
 import UIKit
 
-extension StartViewController: UITableViewDelegate {
+extension CreateViewController: UITableViewDelegate {
   func items<T>(_ builder: @escaping (UITableView, IndexPath, T) -> UITableViewCell) -> ([T]) -> Void {
-    let dataSource = StartProductTableViewDataSource(builder: builder)
+    let dataSource = CreateProductTableViewDataSource(builder: builder)
     return { items in
       dataSource.pushElements(items, to: self.productTableView)
     }

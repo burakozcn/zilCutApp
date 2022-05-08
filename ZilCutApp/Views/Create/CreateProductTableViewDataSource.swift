@@ -1,7 +1,7 @@
 import UIKit
 import Combine
 
-class StartProductTableViewDataSource<T>: NSObject, UITableViewDataSource, UITableViewDelegate  {
+class CreateProductTableViewDataSource<T>: NSObject, UITableViewDataSource, UITableViewDelegate  {
   let build: (UITableView, IndexPath, T) -> UITableViewCell
   var elements: [T] = []
   

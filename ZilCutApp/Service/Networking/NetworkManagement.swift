@@ -61,4 +61,28 @@ struct NetworkManagement {
     dataTask.resume()
     sem.wait()
   }
+  
+  func getMaterialRecord(partyNum: String, completion: @escaping (Array<Dictionary<String, Any>>) -> ()) {
+    let session = URLSession.shared
+    
+    let url = URL(string: "http://localhost:8080/material/indexMat/\(partyNum)")!
+    
+    var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)
+    request.httpMethod = "GET"
+    
+    let sem = DispatchSemaphore(value: 0)
+    let dataTask = session.dataTask(with: request) { (data, response, error) in
+      if let error = error {
+        print(error)
+      }
+      
+      let responseDict = try? JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed)
+      if let dict = responseDict as? Array<Dictionary<String, Any>> {
+        completion(dict)
+      }
+      sem.signal()
+    }
+    dataTask.resume()
+    sem.wait()
+  }
 }
