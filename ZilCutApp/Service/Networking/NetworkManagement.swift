@@ -85,4 +85,65 @@ struct NetworkManagement {
     dataTask.resume()
     sem.wait()
   }
+  
+  func insertCut(_ cutRecord: CutRecord, count: Int, partyNumber: String, completion: @escaping (Array<Dictionary<String, Any>>, HTTPURLResponse) -> (),
+                 closure: @escaping () -> Void) {
+    let session = URLSession.shared
+    
+    let url = URL(string: "http://localhost:8080/material/cut")!
+    
+    let parameters: [String : Any] = ["xStart": cutRecord.xStart, "xEnd": cutRecord.xEnd, "yStart": cutRecord.yStart, "yEnd": cutRecord.yEnd, "horizontal": cutRecord.horizontal, "vertical": cutRecord.vertical, "left": cutRecord.left, "up": cutRecord.up, "cutNumber" : "0000" + String(count), "userID": 323, "partyNumber": partyNumber]
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    do {
+      request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .fragmentsAllowed)
+    } catch {
+      print("JSON Serialization Error")
+    }
+    let sem = DispatchSemaphore(value: 0)
+    let dataTask = session.dataTask(with: request) { (data, response, error) in
+      if let error = error {
+        print(error)
+      }
+      
+      let responseDict = try? JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed)
+      if let dict = responseDict as? Array<Dictionary<String, Any>> {
+        if let httpResponse = response as? HTTPURLResponse {
+          completion(dict, httpResponse)
+        }
+      }
+      closure()
+      sem.signal()
+    }
+    dataTask.resume()
+    sem.wait()
+  }
+  
+  func getCutRecord(partyNum: String, completion: @escaping (Array<Dictionary<String, Any>>) -> (), closure: @escaping () -> Void) {
+    let session = URLSession.shared
+    
+    let url = URL(string: "http://localhost:8080/material/indexCut/\(partyNum)")!
+    
+    var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)
+    request.httpMethod = "GET"
+    
+    let sem = DispatchSemaphore(value: 0)
+    let dataTask = session.dataTask(with: request) { (data, response, error) in
+      if let error = error {
+        print(error)
+      }
+      
+      let responseDict = try? JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed)
+      if let dict = responseDict as? Array<Dictionary<String, Any>> {
+        completion(dict)
+      }
+      closure()
+      sem.signal()
+    }
+    dataTask.resume()
+    sem.wait()
+  }
 }

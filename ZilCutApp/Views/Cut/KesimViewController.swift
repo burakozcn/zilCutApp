@@ -5,6 +5,9 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
   var pickerDataSource: [String] = []
   var pickerMap: [Int] = []
   
+  var viewModel: KesimViewModel!
+  
+  let partyNumber: String
   let kesim: KesimYon
   let cutArray: [Cut]
   var vc: MaterialViewController!
@@ -77,11 +80,11 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     return textField
   }()
   
-  let kaydetButton: UIButton = {
+  let seeButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = UIColor(displayP3Red: 2/255, green: 122/255, blue: 106/255, alpha: 0.9)
-    button.setTitle("Kaydet", for: .normal)
+    button.setTitle("Gör", for: .normal)
     return button
   }()
   
@@ -116,9 +119,10 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     return imageView
   }
   
-  init(kesim: KesimYon, cutArray: [Cut]) {
+  init(kesim: KesimYon, cutArray: [Cut], partyNumber: String) {
     self.kesim = kesim
     self.cutArray = cutArray
+    self.partyNumber = partyNumber
     super.init(nibName: nil, bundle: .main)
   }
   
@@ -129,8 +133,11 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    
+    viewModel = KesimViewModel(kesimYon: kesim, cutArray: cutArray, partyNumber: partyNumber)
+    
     setupView(kesim)
-    kaydetButton.addTarget(self, action: #selector(tapped), for: .touchUpInside)
+    seeButton.addTarget(self, action: #selector(tapped), for: .touchUpInside)
   }
   
   private func setupView(_ kesimYon: KesimYon) {
@@ -140,7 +147,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     view.addSubview(xTextField)
     view.addSubview(yLabel)
     view.addSubview(yTextField)
-    view.addSubview(kaydetButton)
+    view.addSubview(seeButton)
     
     let readGuide = view.readableContentGuide
     let safeGuide = view.safeAreaLayoutGuide
@@ -155,37 +162,37 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
       }
     }
     
-    headerLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: checkMoreThanOne ? height * 0.025 : height * 0.05).isActive = true
+    headerLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: viewModel.checkMore() ? height * 0.025 : height * 0.05).isActive = true
     headerLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
     headerLabel.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.6).isActive = true
     headerLabel.centerXAnchor.constraint(equalTo: readGuide.centerXAnchor).isActive = true
     
     imageView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: height * 0.05).isActive = true
     imageView.leadingAnchor.constraint(equalTo: readGuide.leadingAnchor).isActive = true
-    imageView.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: checkMoreThanOne ? 0.5 : 0.6).isActive = true
-    imageView.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: checkMoreThanOne ? 0.65 : 0.6).isActive = true
+    imageView.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: viewModel.checkMore() ? 0.5 : 0.6).isActive = true
+    imageView.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: viewModel.checkMore() ? 0.65 : 0.6).isActive = true
     
-    kaydetButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: height * 0.05).isActive = true
-    kaydetButton.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.1).isActive = true
-    kaydetButton.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.6).isActive = true
-    kaydetButton.centerXAnchor.constraint(equalTo: readGuide.centerXAnchor).isActive = true
+    seeButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: height * 0.05).isActive = true
+    seeButton.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.1).isActive = true
+    seeButton.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.6).isActive = true
+    seeButton.centerXAnchor.constraint(equalTo: readGuide.centerXAnchor).isActive = true
     
-    xLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: checkMoreThanOne ? height * 0.575 : height * 0.3).isActive = true
+    xLabel.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: viewModel.checkMore() ? height * 0.575 : height * 0.3).isActive = true
     xLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
-    xLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: checkMoreThanOne ? width * 0.125 : width * 0.075).isActive = true
+    xLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: viewModel.checkMore() ? width * 0.125 : width * 0.075).isActive = true
     xLabel.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.1).isActive = true
     
-    xTextField.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: checkMoreThanOne ? height * 0.575 : height * 0.3).isActive = true
+    xTextField.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: viewModel.checkMore() ? height * 0.575 : height * 0.3).isActive = true
     xTextField.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
     xTextField.leadingAnchor.constraint(equalTo: xLabel.trailingAnchor, constant: width * 0.05).isActive = true
     xTextField.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.2).isActive = true
     
-    yLabel.topAnchor.constraint(equalTo: xLabel.bottomAnchor, constant: checkMoreThanOne ? height * 0.05 : height * 0.1).isActive = true
+    yLabel.topAnchor.constraint(equalTo: xLabel.bottomAnchor, constant: viewModel.checkMore() ? height * 0.05 : height * 0.1).isActive = true
     yLabel.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
-    yLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: checkMoreThanOne ? width * 0.125 : width * 0.075).isActive = true
+    yLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: viewModel.checkMore() ? width * 0.125 : width * 0.075).isActive = true
     yLabel.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.1).isActive = true
     
-    yTextField.topAnchor.constraint(equalTo: xTextField.bottomAnchor, constant: checkMoreThanOne ? height * 0.05 : height * 0.1).isActive = true
+    yTextField.topAnchor.constraint(equalTo: xTextField.bottomAnchor, constant: viewModel.checkMore() ? height * 0.05 : height * 0.1).isActive = true
     yTextField.heightAnchor.constraint(equalTo: safeGuide.heightAnchor, multiplier: 0.075).isActive = true
     yTextField.leadingAnchor.constraint(equalTo: yLabel.trailingAnchor, constant: width * 0.05).isActive = true
     yTextField.widthAnchor.constraint(equalTo: readGuide.widthAnchor, multiplier: 0.2).isActive = true
@@ -206,7 +213,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     default:
       print("Error")
     }
-    if checkMoreThanOne {
+    if viewModel.checkMore() {
       view.addSubview(imageViewGreen)
       
       imageViewGreen.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: height * 0.05).isActive = true
@@ -217,20 +224,12 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
       setupCutViews()
       setupPickerView()
       setupTextField()
-      pickerViewNum(num)
+      viewModel.pickerViewNum(num)
     }
   }
   
   @objc private func tapped() {
-    guard let n1 = NumberFormatter().number(from: xTextField.text!), let n2 = NumberFormatter().number(from: yTextField.text!) else {
-      return
-    }
-    let f1 = CGFloat(truncating: n1)
-    let f2 = CGFloat(truncating: n2)
-    publicCutArray.append(Cut(xStart: xStart, yStart: yStart, xEnd: (xStart + f1), yEnd: (yStart + f2), kesimYon: kesim))
-    
-    vc = MaterialViewController(cutArray: publicCutArray)
-    self.navigationController?.pushViewController(vc, animated: true)
+    viewModel.saveCut(xFrom: xTextField.text!, yFrom: yTextField.text!)
   }
   
   private func setupCutViews() {
@@ -294,7 +293,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     pickerView.delegate = self
     pickerView.dataSource = self
     
-    let toolbar = UIToolbar()
+    let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     toolbar.sizeToFit()
     let doneButton = UIBarButtonItem(title: NSLocalizedString("Tamam", comment: "Done"), style: .plain, target: self, action: #selector(donedatePicker))
     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
@@ -338,7 +337,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     textField.text = pickerView.delegate?.pickerView?(pickerView, titleForRow: row, forComponent: component)
     
     self.view.endEditing(true)
-    calcStarts(textField.text)
+    viewModel.calcStarts(textField.text)
   }
   
   @objc func cancelDatePicker() {

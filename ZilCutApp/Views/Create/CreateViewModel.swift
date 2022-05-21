@@ -63,7 +63,7 @@ class CreateViewModel: ObservableObject {
   
   func tableView(startVC: CreateViewController) {
     $resultArray.sink(receiveValue: startVC.items { tableView, indexPath, item in
-      let cell = tableView.dequeueReusableCell(withIdentifier: "StartProductTableViewCell", for: indexPath) as! CreateProductTableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CreateProductTableViewCell", for: indexPath) as! CreateProductTableViewCell
       cell.label?.text = item
       return cell
     }).store(in: &disposeBag)
@@ -79,7 +79,7 @@ class CreateViewModel: ObservableObject {
     coordinator = CreateViewCoordinator(window: keyWindow!)
     networkManagement = NetworkManagement()
     networkManagement.insertMaterial(name: name, color: getColor(name), issueDate: Date(), partyNumber: partyNumber, userID: 320, active: true, width: width, height: height) { arr, response in
-      
+
     }
     coordinator.goToMaterial(partyNum: partyNumber)
   }
@@ -88,6 +88,9 @@ class CreateViewModel: ObservableObject {
     var color = ""
     let delimeter = " "
     let token = name.components(separatedBy: delimeter)
+    if token.last?.last?.isNumber != nil {
+      color = "Doğal"
+    }
     color = String(token.last!.prefix(1) + token.last!.lowercased().dropFirst())
     return color
   }

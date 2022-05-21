@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-public enum KesimYon {
-  case solyukari
+public enum KesimYon: Int16 {
+  case solyukari = 0
   case solasagi
   case sagyukari
   case sagasagi

@@ -6,11 +6,11 @@ extension KesimViewController: UIPickerViewDataSource,  UIPickerViewDelegate {
   }
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return pickerDataSource.count
+    return viewModel.pickerDataSource.count
   }
   
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return pickerDataSource[row]
+    return viewModel.pickerDataSource[row]
   }
 }

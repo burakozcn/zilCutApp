@@ -13,11 +13,13 @@
 		8C3844B5281D8BC50014140B /* CreateProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3844B3281D8BC50014140B /* CreateProductTableViewCell.swift */; };
 		8C3844B6281D8BC50014140B /* CreateProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3844B4281D8BC50014140B /* CreateProductTableViewCell.xib */; };
 		8C45B0162812DDD400BEB794 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45B0152812DDD400BEB794 /* CreateViewController.swift */; };
+		8C4E41A6282E351100BAEE80 /* CutRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4E41A4282E351100BAEE80 /* CutRecord+CoreDataClass.swift */; };
+		8C4E41A7282E351100BAEE80 /* CutRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4E41A5282E351100BAEE80 /* CutRecord+CoreDataProperties.swift */; };
 		8C57C74A27CE221200E1A357 /* KesimViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57C74927CE221200E1A357 /* KesimViewExt.swift */; };
 		8C7054FD281E771E006F68CB /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7054FC281E771E006F68CB /* UITextFieldExt.swift */; };
 		8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */; };
 		8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D6AF6279452B100FBCACE /* KesimViewController.swift */; };
-		8CB6C4462796BEF9002F96EB /* NewCut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB6C4452796BEF9002F96EB /* NewCut.swift */; };
+		8CB6C4462796BEF9002F96EB /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB6C4452796BEF9002F96EB /* Cut.swift */; };
 		8CBA0D2E28191C7B0006185F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D2D28191C7B0006185F /* AppCoordinator.swift */; };
 		8CBA0D3628191E2F0006185F /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3528191E2F0006185F /* CreateViewModel.swift */; };
 		8CBA0D3828191E3A0006185F /* CreateViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3728191E3A0006185F /* CreateViewCoordinator.swift */; };
@@ -79,11 +81,13 @@
 		8C3844B3281D8BC50014140B /* CreateProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductTableViewCell.swift; sourceTree = "<group>"; };
 		8C3844B4281D8BC50014140B /* CreateProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateProductTableViewCell.xib; sourceTree = "<group>"; };
 		8C45B0152812DDD400BEB794 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		8C4E41A4282E351100BAEE80 /* CutRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CutRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8C4E41A5282E351100BAEE80 /* CutRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CutRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8C57C74927CE221200E1A357 /* KesimViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimViewExt.swift; sourceTree = "<group>"; };
 		8C7054FC281E771E006F68CB /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestRecognizer.swift; sourceTree = "<group>"; };
 		8C7D6AF6279452B100FBCACE /* KesimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesimViewController.swift; sourceTree = "<group>"; };
-		8CB6C4452796BEF9002F96EB /* NewCut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCut.swift; sourceTree = "<group>"; };
+		8CB6C4452796BEF9002F96EB /* Cut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cut.swift; sourceTree = "<group>"; };
 		8CBA0D2D28191C7B0006185F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8CBA0D3528191E2F0006185F /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		8CBA0D3728191E3A0006185F /* CreateViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewCoordinator.swift; sourceTree = "<group>"; };
@@ -332,12 +336,14 @@
 		8CE583B3278C20D000570989 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C4E41A5282E351100BAEE80 /* CutRecord+CoreDataProperties.swift */,
+				8C4E41A4282E351100BAEE80 /* CutRecord+CoreDataClass.swift */,
+				8CB6C4452796BEF9002F96EB /* Cut.swift */,
 				8CFA42AD281FC23A004859F7 /* BeltNames+CoreDataClass.swift */,
 				8CFA42AE281FC23A004859F7 /* BeltNames+CoreDataProperties.swift */,
 				8CE583B4278C20E300570989 /* MaterialRecord.swift */,
 				8CE583B6278C20F400570989 /* CutRecord.swift */,
 				8CE583B8278C210200570989 /* MapRecord.swift */,
-				8CB6C4452796BEF9002F96EB /* NewCut.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CE0FB5028284F0D00A50B99 /* PDFViewModel.swift in Sources */,
+				8C4E41A7282E351100BAEE80 /* CutRecord+CoreDataProperties.swift in Sources */,
 				8CBA0D3828191E3A0006185F /* CreateViewCoordinator.swift in Sources */,
 				8CBA0D3A28191E8F0006185F /* MaterialViewModel.swift in Sources */,
 				8C3844B5281D8BC50014140B /* CreateProductTableViewCell.swift in Sources */,
@@ -507,13 +514,14 @@
 				8C57C74A27CE221200E1A357 /* KesimViewExt.swift in Sources */,
 				8CE583B7278C20F400570989 /* CutRecord.swift in Sources */,
 				8C7054FD281E771E006F68CB /* UITextFieldExt.swift in Sources */,
+				8C4E41A6282E351100BAEE80 /* CutRecord+CoreDataClass.swift in Sources */,
 				8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */,
 				8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */,
 				8CBA0D3628191E2F0006185F /* CreateViewModel.swift in Sources */,
 				8C7D6AF52794090B00FBCACE /* PanGestRecognizer.swift in Sources */,
 				8CBA0D3C28191EBC0006185F /* MaterialViewCoordinator.swift in Sources */,
 				8CE0FB5928284FF800A50B99 /* LoginViewController.swift in Sources */,
-				8CB6C4462796BEF9002F96EB /* NewCut.swift in Sources */,
+				8CB6C4462796BEF9002F96EB /* Cut.swift in Sources */,
 				8CFA42B728214B83004859F7 /* CreateViewControllerExt.swift in Sources */,
 				8CE0FB642828537D00A50B99 /* StartViewCoordinator.swift in Sources */,
 				8CE0FB602828522F00A50B99 /* StartViewController.swift in Sources */,

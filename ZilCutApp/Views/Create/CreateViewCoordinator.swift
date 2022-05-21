@@ -20,7 +20,7 @@ class CreateViewCoordinator: BaseCoordinator<Void> {
   @discardableResult
   func goToMaterial(partyNum: String) -> AnyPublisher<Void, Never> {
     let rootVC = window.rootViewController as! UINavigationController
-    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, partyNum: partyNum)
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, partyNum: partyNum, temp: false)
     return coordinate(coordinator: materialCoordinator)
   }
 }
