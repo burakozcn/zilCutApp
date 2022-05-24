@@ -9,21 +9,21 @@ class KesimViewModel {
   let kesimYon: KesimYon
   let cutArray: [Cut]
   var kesimCoordinator: KesimViewCoordinator!
-  let partyNumber: String
+  let basicData: BasicData
   
   var xStart: CGFloat = 0
   var yStart: CGFloat = 0
   
-  init(kesimYon: KesimYon, cutArray: [Cut], partyNumber: String) {
+  init(kesimYon: KesimYon, cutArray: [Cut], basicData: BasicData) {
     self.kesimYon = kesimYon
     self.cutArray = cutArray
-    self.partyNumber = partyNumber
+    self.basicData = basicData
   }
   
   func startView(rootVC: UINavigationController) {
     checkMore()
     
-    kesimVC = KesimViewController(kesim: kesimYon, cutArray: cutArray, partyNumber: partyNumber)
+    kesimVC = KesimViewController(kesim: kesimYon, cutArray: cutArray, basicData: basicData)
     rootVC.pushViewController(kesimVC, animated: true)
   }
   
@@ -44,14 +44,14 @@ class KesimViewModel {
       .compactMap({$0 as? UIWindowScene})
       .first?.windows
       .filter({$0.isKeyWindow}).first?.rootViewController as! UINavigationController
-    kesimCoordinator = KesimViewCoordinator(rootVC: rootVC, kesimYon: kesimYon, cutArray: cutArray, partyNumber: partyNumber)
-    kesimCoordinator.goToMaterial(partyNum: partyNumber)
+    kesimCoordinator = KesimViewCoordinator(rootVC: rootVC, kesimYon: kesimYon, cutArray: cutArray, basicData: basicData)
+    kesimCoordinator.goToMaterial()
   }
   
   private func tempSave(cut: Cut) {
     let context = persistence.persistentContainer.viewContext
     let cutRecord = NSEntityDescription.insertNewObject(forEntityName: "CutRecord", into: context) as! CutRecord
-    cutRecord.partyNumber = partyNumber
+    cutRecord.partyNumber = basicData.partyNumber
     cutRecord.xStart = Float(cut.xStart)
     cutRecord.xEnd = Float(cut.xEnd)
     cutRecord.yStart = Float(cut.yStart)
@@ -127,9 +127,9 @@ class KesimViewModel {
     }
     
     if pos == "Yan" {
-      xStart = publicCutArray[num].xEnd
+      xStart = cutArray[num].xEnd
     } else if pos == "Alt" {
-      yStart = publicCutArray[num].yEnd
+      yStart = cutArray[num].yEnd
     }
   }
 }

@@ -7,7 +7,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
   
   var viewModel: KesimViewModel!
   
-  let partyNumber: String
+  let basicData: BasicData
   let kesim: KesimYon
   let cutArray: [Cut]
   var vc: MaterialViewController!
@@ -119,10 +119,10 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     return imageView
   }
   
-  init(kesim: KesimYon, cutArray: [Cut], partyNumber: String) {
+  init(kesim: KesimYon, cutArray: [Cut], basicData: BasicData) {
     self.kesim = kesim
     self.cutArray = cutArray
-    self.partyNumber = partyNumber
+    self.basicData = basicData
     super.init(nibName: nil, bundle: .main)
   }
   
@@ -134,7 +134,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     view.backgroundColor = .white
     
-    viewModel = KesimViewModel(kesimYon: kesim, cutArray: cutArray, partyNumber: partyNumber)
+    viewModel = KesimViewModel(kesimYon: kesim, cutArray: cutArray, basicData: basicData)
     
     setupView(kesim)
     seeButton.addTarget(self, action: #selector(tapped), for: .touchUpInside)
@@ -305,31 +305,6 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     textField.inputView = pickerView
   }
   
-  func pickerViewNum(_ number: Int) {
-    for i in 0..<number {
-      pickerDataSource.append("\(i + 1)" + " - Yan")
-      pickerDataSource.append("\(i + 1)" + " - Alt")
-      pickerMap.append(i + 1)
-      pickerMap.append((i + 1) * 10)
-    }
-  }
-  
-  private func calcStarts(_ text: String?) {
-    var num: Int = 0
-    var pos: String = ""
-    
-    if let str = text {
-      num = Int(str.prefix(1))!
-      pos = String(str.suffix(3))
-    }
-    
-    if pos == "Yan" {
-      xStart = publicCutArray[num].xEnd
-    } else if pos == "Alt" {
-      yStart = publicCutArray[num].yEnd
-    }
-  }
-  
   @objc func donedatePicker() {
     let component = 0
     
@@ -337,6 +312,7 @@ class KesimViewController: UIViewController, UITextFieldDelegate {
     textField.text = pickerView.delegate?.pickerView?(pickerView, titleForRow: row, forComponent: component)
     
     self.view.endEditing(true)
+    print(textField.text)
     viewModel.calcStarts(textField.text)
   }
   

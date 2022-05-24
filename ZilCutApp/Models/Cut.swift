@@ -16,5 +16,3 @@ public struct Cut {
     self.kesimYon = kesimYon
   }
 }
-
-public var publicCutArray = [Cut(xStart: 0, yStart: 0, xEnd: 3000, yEnd: 200000, kesimYon: .start)]

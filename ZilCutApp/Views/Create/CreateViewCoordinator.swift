@@ -2,25 +2,24 @@ import UIKit
 import Combine
 
 class CreateViewCoordinator: BaseCoordinator<Void> {
-  private var startViewModel: CreateViewModel!
-  private let window: UIWindow
+  private var viewModel: CreateViewModel!
+  private let rootVC: UINavigationController
   private var materialCoordinator: MaterialViewCoordinator!
   
-  init(window: UIWindow) {
-    self.window = window
+  init(rootVC: UINavigationController) {
+    self.rootVC = rootVC
   }
   
   override func start() -> AnyPublisher<Void, Never> {
-    startViewModel = CreateViewModel()
-    startViewModel.startView(window: window)
+    viewModel = CreateViewModel()
+    viewModel.startView(rootVC: rootVC)
     
     return Empty<Void, Never>(completeImmediately: false).eraseToAnyPublisher()
   }
   
   @discardableResult
-  func goToMaterial(partyNum: String) -> AnyPublisher<Void, Never> {
-    let rootVC = window.rootViewController as! UINavigationController
-    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, partyNum: partyNum, temp: false)
+  func goToMaterial(basicData: BasicData) -> AnyPublisher<Void, Never> {
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: false)
     return coordinate(coordinator: materialCoordinator)
   }
 }

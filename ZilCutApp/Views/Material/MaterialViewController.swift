@@ -3,21 +3,12 @@ import UIKit
 class MaterialViewController: UIViewController {
  
  let cutArray: [Cut]
- let partyNum: String
+ let basicData: BasicData
  let temp: Bool
  var initialCenter: CGPoint = .zero
  var lastCenter: CGPoint = .zero
  var kesimVC: KesimViewController!
  var viewModel: MaterialViewModel!
- 
- var solUstX: CGFloat = 0
- var solUstY: CGFloat = 0
- var sagUstX: CGFloat = 0
- var sagUstY: CGFloat = 0
- var solAltX: CGFloat = 0
- var solAltY: CGFloat = 0
- var sagAltX: CGFloat = 0
- var sagAltY: CGFloat = 0
  
  let imageView: UIImageView = {
   let imageView = UIImageView()
@@ -46,9 +37,9 @@ class MaterialViewController: UIViewController {
   return imageView
  }
  
- init(cutArray: [Cut], partyNum: String, temp: Bool) {
+ init(cutArray: [Cut], basicData: BasicData, temp: Bool) {
   self.cutArray = cutArray
-  self.partyNum = partyNum
+  self.basicData = basicData
   self.temp = temp
   super.init(nibName: nil, bundle: .main)
  }
@@ -62,6 +53,8 @@ class MaterialViewController: UIViewController {
   self.view.backgroundColor = .lightGray
   if temp {
    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kaydet", style: .plain, target: self, action: #selector(save))
+  } else {
+   self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "PDF Oluştur", style: .plain, target: self, action: #selector(createPDF))
   }
   setupView()
  }
@@ -93,23 +86,15 @@ class MaterialViewController: UIViewController {
     case .sagyukari:
      imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: (-cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
      imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: (cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
-     sagUstX = cutArray[i].xEnd
-     sagUstY = cutArray[i].yEnd
     case .solyukari:
      imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: (cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
      imageViewArray[i-1].topAnchor.constraint(equalTo: imageView.topAnchor, constant: (cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
-     solUstX = cutArray[i].xEnd
-     solUstY = cutArray[i].yEnd
     case .solasagi:
      imageViewArray[i-1].leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: (cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
      imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: (-cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
-     solAltX = cutArray[i].xEnd
-     solAltY = cutArray[i].yEnd
     case .sagasagi:
      imageViewArray[i-1].trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: (-cutArray[i].xStart / cutArray[0].xEnd) * width * 0.8).isActive = true
      imageViewArray[i-1].bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: (-cutArray[i].yStart / cutArray[0].yEnd) * height * 0.8).isActive = true
-     sagAltX = cutArray[i].xEnd
-     sagAltY = cutArray[i].yEnd
     default:
      break
     }
@@ -127,7 +112,7 @@ class MaterialViewController: UIViewController {
   case .ended:
    let newCenter = CGPoint(x: translation.x, y: translation.y)
    lastCenter = newCenter
-   viewModel = MaterialViewModel(partyNum: partyNum, temp: temp)
+   viewModel = MaterialViewModel(basicData: basicData, temp: temp)
    viewModel.cutSetup(width: imageView.bounds.width, height: imageView.bounds.height, initialCenter: initialCenter, lastCenter: lastCenter, cutArr: cutArray)
   default:
    break
@@ -135,8 +120,13 @@ class MaterialViewController: UIViewController {
  }
  
  @objc private func save() {
-  viewModel = MaterialViewModel(partyNum: partyNum, temp: true)
+  viewModel = MaterialViewModel(basicData: basicData, temp: true)
   viewModel.sendToDB(count: cutArray.count - 1)
+ }
+ 
+ @objc private func createPDF() {
+  viewModel = MaterialViewModel(basicData: basicData, temp: temp)
+  viewModel.PDF(cut: cutArray)
  }
 }
 

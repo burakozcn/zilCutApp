@@ -6,25 +6,25 @@ class KesimViewCoordinator: BaseCoordinator<Void> {
   let rootVC: UINavigationController
   let kesimYon: KesimYon
   let cutArray: [Cut]
-  let partyNumber: String
+  let basicData: BasicData
   private var materialCoordinator: MaterialViewCoordinator!
   
-  init(rootVC: UINavigationController, kesimYon: KesimYon, cutArray: [Cut], partyNumber: String) {
+  init(rootVC: UINavigationController, kesimYon: KesimYon, cutArray: [Cut], basicData: BasicData) {
     self.rootVC = rootVC
     self.kesimYon = kesimYon
     self.cutArray = cutArray
-    self.partyNumber = partyNumber
+    self.basicData = basicData
   }
   
   override func start() -> AnyPublisher<Void, Never> {
-    kesimViewModel = KesimViewModel(kesimYon: kesimYon, cutArray: cutArray, partyNumber: partyNumber)
+    kesimViewModel = KesimViewModel(kesimYon: kesimYon, cutArray: cutArray, basicData: basicData)
     kesimViewModel.startView(rootVC: rootVC)
     return Empty<Void, Never>(completeImmediately: false).eraseToAnyPublisher()
   }
   
   @discardableResult
-  func goToMaterial(partyNum: String) -> AnyPublisher<Void, Never> {
-    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, partyNum: partyNum, temp: true)
+  func goToMaterial() -> AnyPublisher<Void, Never> {
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: true)
     return coordinate(coordinator: materialCoordinator)
   }
 }

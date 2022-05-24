@@ -322,7 +322,9 @@ class CreateViewController: UIViewController {
   
   @objc func createMaterial() {
     if check() {
-      viewModel.createMaterial(name: productNameTextField.text!, partyNumber: partyNumTextField.text!, width: Float(widthTextField.text!) ?? 0.0, height: Float(lengthTextField.text!) ?? 0.0)
+      let df = DateFormatter()
+      df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+      viewModel.createMaterial(basicData: BasicData(name: productNameTextField.text!, partyNumber: partyNumTextField.text!, userID: 317, createDate: df.string(from: Date()), width: Float(widthTextField.text!) ?? 0.0, length: Float(lengthTextField.text!) ?? 0.0))
     }
   }
   

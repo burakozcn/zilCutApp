@@ -7,25 +7,25 @@ class MaterialViewModel {
   private var networkManagement: NetworkManagement!
   private var cutArray: [Cut]!
   private var materialCoordinator: MaterialViewCoordinator!
-  let partyNum: String
+  let basicData: BasicData
   var temp: Bool
   @Published var networkCheck = false
   var disposeBag = Set<AnyCancellable>()
   
-  init(partyNum: String, temp: Bool) {
-    self.partyNum = partyNum
+  init(basicData: BasicData, temp: Bool) {
+    self.basicData = basicData
     self.temp = temp
   }
   
   func startView(rootVC: UINavigationController) {
     cutArray = [Cut]()
-    setupCutArray(partyNum: partyNum)
+    setupCutArray(partyNum: basicData.partyNumber)
     
     $networkCheck.sink { bool in
       if bool == true {
         self.cutArray += self.tempCut()
         DispatchQueue.main.async {
-          self.materialVC = MaterialViewController(cutArray: self.cutArray, partyNum: self.partyNum, temp: self.temp)
+          self.materialVC = MaterialViewController(cutArray: self.cutArray, basicData: self.basicData, temp: self.temp)
           rootVC.pushViewController(self.materialVC, animated: true)
         }
       }
@@ -49,7 +49,7 @@ class MaterialViewModel {
   private func cuts() {
     DispatchQueue.main.async {
       self.networkManagement = NetworkManagement()
-      self.networkManagement.getCutRecord(partyNum: self.partyNum) { arrays in
+      self.networkManagement.getCutRecord(partyNum: self.basicData.partyNumber) { arrays in
         for array in arrays {
           let dict = array
           let cut = Cut(xStart: CGFloat(dict["xStart"] as! Float), yStart: CGFloat(dict["yStart"] as! Float), xEnd: CGFloat(dict["xEnd"] as! Float), yEnd: CGFloat(dict["yEnd"] as! Float), kesimYon: self.recordToEnum(left: dict["left"] as! Bool, up: dict["up"] as! Bool, vertical: dict["vertical"] as! Bool, horizontal: dict["horizontal"] as! Bool))
@@ -145,7 +145,7 @@ class MaterialViewModel {
       .compactMap({$0 as? UIWindowScene})
       .first?.windows
       .filter({$0.isKeyWindow}).first?.rootViewController as! UINavigationController
-    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, partyNum: partyNum, temp: temp)
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: temp)
     materialCoordinator.goToKesim(kesimYon: kesimYon, cutArray: cutArray)
   }
   
@@ -177,7 +177,7 @@ class MaterialViewModel {
       networkManagement = NetworkManagement()
       guard cutRecords.count > 0 else { return }
       DispatchQueue.main.async {
-        self.networkManagement.insertCut(cutRecord, count: count, partyNumber: self.partyNum) { arr, response in }
+        self.networkManagement.insertCut(cutRecord, count: count, partyNumber: self.basicData.partyNumber) { arr, response in }
       closure: {
         self.deleteCut()
       }
@@ -215,5 +215,16 @@ class MaterialViewModel {
       .filter({$0.isKeyWindow}).first?.rootViewController as! UINavigationController
     
     startView(rootVC: rootVC)
+  }
+  
+  func PDF(cut: [Cut]) {
+    let rootVC = UIApplication.shared.connectedScenes
+      .filter({$0.activationState == .foregroundActive})
+      .compactMap({$0 as? UIWindowScene})
+      .first?.windows
+      .filter({$0.isKeyWindow}).first?.rootViewController as! UINavigationController
+    
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: temp)
+    materialCoordinator.goToPDF(cutArray: cut)
   }
 }

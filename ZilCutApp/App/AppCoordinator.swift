@@ -2,7 +2,7 @@ import UIKit
 import Combine
 
 class AppCoordinator: BaseCoordinator<Void> {
-  private var startCoordinator: CreateViewCoordinator!
+  private var loginCoordinator: LoginViewCoordinator!
   private let window: UIWindow
   
   init(window: UIWindow) {
@@ -11,7 +11,7 @@ class AppCoordinator: BaseCoordinator<Void> {
   
   @discardableResult
   override func start() -> AnyPublisher<Void, Never> {
-    startCoordinator = CreateViewCoordinator(window: window)
-    return coordinate(coordinator: startCoordinator)
+    loginCoordinator = LoginViewCoordinator(window: window)
+    return coordinate(coordinator: loginCoordinator)
   }
 }

@@ -3,18 +3,15 @@ import Combine
 import CoreData
 
 class CreateViewModel: ObservableObject {
-  private var startVC: CreateViewController!
+  private var createVC: CreateViewController!
   private var networkManagement: NetworkManagement!
   @Published var resultArray = [String]()
   var disposeBag = Set<AnyCancellable>()
   private var coordinator: CreateViewCoordinator!
   
-  func startView(window: UIWindow) {
-    startVC = CreateViewController()
-    
-    window.rootViewController = UINavigationController(rootViewController: startVC)
-    window.makeKeyAndVisible()
-    saveNames()
+  func startView(rootVC: UINavigationController) {
+    createVC = CreateViewController()
+    rootVC.pushViewController(createVC, animated: true)
   }
   
   private func saveNames() {
@@ -69,19 +66,20 @@ class CreateViewModel: ObservableObject {
     }).store(in: &disposeBag)
   }
   
-  func createMaterial(name: String, partyNumber: String, width: Float, height: Float) {
+  func createMaterial(basicData: BasicData) {
     let keyWindow = UIApplication.shared.connectedScenes
       .filter({$0.activationState == .foregroundActive})
       .compactMap({$0 as? UIWindowScene})
       .first?.windows
       .filter({$0.isKeyWindow}).first
     
-    coordinator = CreateViewCoordinator(window: keyWindow!)
+    let rootVC = keyWindow?.rootViewController as! UINavigationController
+    coordinator = CreateViewCoordinator(rootVC: rootVC)
     networkManagement = NetworkManagement()
-    networkManagement.insertMaterial(name: name, color: getColor(name), issueDate: Date(), partyNumber: partyNumber, userID: 320, active: true, width: width, height: height) { arr, response in
+    networkManagement.insertMaterial(name: basicData.name, color: getColor(basicData.name), issueDate: basicData.createDate, partyNumber: basicData.partyNumber, userID: basicData.userID, active: true, width: basicData.width, height: basicData.length) { arr, response in
 
     }
-    coordinator.goToMaterial(partyNum: partyNumber)
+    coordinator.goToMaterial(basicData: basicData)
   }
   
   private func getColor(_ name: String) -> String {
