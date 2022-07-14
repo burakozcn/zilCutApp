@@ -32,7 +32,6 @@ class PDFViewController: UIViewController {
     imageView.backgroundColor = .white
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .scaleToFill
-    imageView.image = UIColor(displayP3Red: 83/255, green: 165/255, blue: 154/255, alpha: 0.9).image()
     return imageView
   }()
   
@@ -79,13 +78,14 @@ class PDFViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = basicData.backgroundColor
     print(cutArray)
     viewModel = PDFViewModel()
     
     headerLabel.text = basicData.name
     partyNumLabel.text = basicData.partyNumber
     widthLengthLabel.text = "En = \(cutArray[0].xEnd) Boy = \(cutArray[0].yEnd) Toplam m2 = \(viewModel.areaCalc(cut: cutArray))"
+    imageView.image = basicData.bandColor.image()
     
     setupView()
     createPDF(from: self.view)
@@ -129,9 +129,16 @@ class PDFViewController: UIViewController {
       var labelArrayLength = [UILabel]()
       
       for i in 1..<cutArray.count {
-        imageViewArray.append(anotherImageView(color: UIColor.clear))
-        labelArrayWidth.append(label(color: .black))
-        labelArrayLength.append(label(color: .black))
+        imageViewArray.append(anotherImageView(color: basicData.cutColor))
+        var labelColor: UIColor {
+          if basicData.backgroundColor == .black {
+            return .white
+          } else {
+            return .black
+          }
+        }
+        labelArrayWidth.append(label(color: labelColor))
+        labelArrayLength.append(label(color: labelColor))
         
         view.addSubview(imageViewArray[i-1])
         imageViewArray[i-1].addSubview(labelArrayWidth[i-1])

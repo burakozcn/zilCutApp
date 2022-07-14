@@ -324,7 +324,8 @@ class CreateViewController: UIViewController {
     if check() {
       let df = DateFormatter()
       df.dateFormat = "yyyy-MM-dd hh:mm:ss"
-      viewModel.createMaterial(basicData: BasicData(name: productNameTextField.text!, partyNumber: partyNumTextField.text!, userID: 317, createDate: df.string(from: Date()), width: Float(widthTextField.text!) ?? 0.0, length: Float(lengthTextField.text!) ?? 0.0))
+      let color = viewModel.getColor(productNameTextField.text!)
+      viewModel.createMaterial(basicData: BasicData(name: productNameTextField.text!, partyNumber: partyNumTextField.text!, userID: 317, createDate: df.string(from: Date()), width: Float(widthTextField.text!) ?? 0.0, length: Float(lengthTextField.text!) ?? 0.0, bandColor: color.0, backgroundColor: color.1, cutColor: color.2))
     }
   }
   

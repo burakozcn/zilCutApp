@@ -16,9 +16,9 @@ class CreateViewModel: ObservableObject {
   
   private func saveNames() {
     networkManagement = NetworkManagement()
-//    networkManagement.getNames { arr in
-//      self.dictToModel(arr)
-//    }
+    //    networkManagement.getNames { arr in
+    //      self.dictToModel(arr)
+    //    }
   }
   
   private func dictToModel(_ array: Array<Dictionary<String, Any>>) {
@@ -76,20 +76,38 @@ class CreateViewModel: ObservableObject {
     let rootVC = keyWindow?.rootViewController as! UINavigationController
     coordinator = CreateViewCoordinator(rootVC: rootVC)
     networkManagement = NetworkManagement()
-    networkManagement.insertMaterial(name: basicData.name, color: getColor(basicData.name), issueDate: basicData.createDate, partyNumber: basicData.partyNumber, userID: basicData.userID, active: true, width: basicData.width, height: basicData.length) { arr, response in
-
+    networkManagement.insertMaterial(name: basicData.name, color: getColorName(basicData.name), issueDate: basicData.createDate, partyNumber: basicData.partyNumber, userID: basicData.userID, active: true, width: basicData.width, height: basicData.length) { arr, response in
+      
     }
     coordinator.goToMaterial(basicData: basicData)
   }
   
-  private func getColor(_ name: String) -> String {
-    var color = ""
-    let delimeter = " "
-    let token = name.components(separatedBy: delimeter)
-    if token.last?.last?.isNumber != nil {
-      color = "Doğal"
+  private func getColorName(_ name: String) -> String {
+    let arrayColors = ["BEYAZ", "SİYAH", "YEŞİL", "AÇIK YEŞİL", "PETROL YEŞİLİ", "PETROL YEŞİL", "ŞEFFAF", "GRİ", "MAVİ", "AÇIK MAVİ", "KOYU MAVİ", "ELMA YEŞİLİ", "ELMA YEŞİL", "KOYU GRİ", "SARI", "TURUNCU", "HARDAL"]
+    
+    var colorName = ""
+    
+    for arrayColor in arrayColors {
+      if name.contains(arrayColor) {
+        colorName = String(arrayColor.first!) + arrayColor.dropFirst().lowercased()
+      }
     }
-    color = String(token.last!.prefix(1) + token.last!.lowercased().dropFirst())
-    return color
+    
+    if colorName == "" {
+      colorName = "Yeşil"
+    }
+    return colorName
+  }
+  
+  func getColor(_ name: String) -> (UIColor, UIColor, UIColor) {
+    let colorName = getColorName(name)
+    
+    guard let color = ColorSwitch(rawValue: colorName.replacingOccurrences(of: " ", with: "").lowercased().replacingOccurrences(of: "i̇", with: "i")) else { return (UIColor.systemBlue, UIColor.white, UIColor.clear) }
+    
+    let bandColor = color.bandColor
+    let backColor = color.backgroundColor
+    let cutColor = color.cutColor
+    
+    return (bandColor, backColor, cutColor)
   }
 }

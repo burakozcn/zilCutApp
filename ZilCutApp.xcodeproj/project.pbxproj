@@ -34,6 +34,7 @@
 		8CBA0D3A28191E8F0006185F /* MaterialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3928191E8F0006185F /* MaterialViewModel.swift */; };
 		8CBA0D3C28191EBC0006185F /* MaterialViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA0D3B28191EBC0006185F /* MaterialViewCoordinator.swift */; };
 		8CBDEF7F27BA9AEF009589A5 /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBDEF7E27BA9AEF009589A5 /* MyPickerView.swift */; };
+		8CC9D7682844ED790008EC26 /* ColorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9D7672844ED790008EC26 /* ColorSwitch.swift */; };
 		8CE0FB4E28284EF400A50B99 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE0FB4D28284EF400A50B99 /* PDFViewController.swift */; };
 		8CE0FB5028284F0D00A50B99 /* PDFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE0FB4F28284F0D00A50B99 /* PDFViewModel.swift */; };
 		8CE0FB5228284F3F00A50B99 /* PDFViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE0FB5128284F3F00A50B99 /* PDFViewCoordinator.swift */; };
@@ -109,6 +110,7 @@
 		8CBA0D3928191E8F0006185F /* MaterialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewModel.swift; sourceTree = "<group>"; };
 		8CBA0D3B28191EBC0006185F /* MaterialViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialViewCoordinator.swift; sourceTree = "<group>"; };
 		8CBDEF7E27BA9AEF009589A5 /* MyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
+		8CC9D7672844ED790008EC26 /* ColorSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitch.swift; sourceTree = "<group>"; };
 		8CE0FB4D28284EF400A50B99 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		8CE0FB4F28284F0D00A50B99 /* PDFViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewModel.swift; sourceTree = "<group>"; };
 		8CE0FB5128284F3F00A50B99 /* PDFViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewCoordinator.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				8CE583BA278E916000570989 /* KesimYon.swift */,
 				8C7D6AF42794090B00FBCACE /* PanGestRecognizer.swift */,
 				8CBDEF7E27BA9AEF009589A5 /* MyPickerView.swift */,
+				8CC9D7672844ED790008EC26 /* ColorSwitch.swift */,
 			);
 			path = "Protocols+Classes+Enums";
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				8C7054FD281E771E006F68CB /* UITextFieldExt.swift in Sources */,
 				8C4E41A6282E351100BAEE80 /* CutRecord+CoreDataClass.swift in Sources */,
 				8C76650C283A5208003974FC /* StartTableViewCell.swift in Sources */,
+				8CC9D7682844ED790008EC26 /* ColorSwitch.swift in Sources */,
 				8C7D6AF7279452B100FBCACE /* KesimViewController.swift in Sources */,
 				8CE43BCA278B472800F95B99 /* ZilCutApp.xcdatamodeld in Sources */,
 				8C13FDF028393F310046DF03 /* ChoiceViewController.swift in Sources */,
@@ -663,7 +667,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -718,7 +722,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

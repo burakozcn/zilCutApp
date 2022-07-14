@@ -28,7 +28,8 @@ class StartViewModel {
     networkManagement = NetworkManagement()
     networkManagement.getAllMaterial { arrays in
       for array in arrays {
-        self.basicDataArray.append(BasicData(name: array["name"] as! String, partyNumber: array["partyNumber"] as! String, userID: array["userID"] as! Int, createDate: array["issueDate"] as! String, width: array["width"] as! Float, length: array["height"] as! Float))
+        let color = self.getColor(array["name"] as! String)
+        self.basicDataArray.append(BasicData(name: array["name"] as! String, partyNumber: array["partyNumber"] as! String, userID: array["userID"] as! Int, createDate: array["issueDate"] as! String, width: array["width"] as! Float, length: array["height"] as! Float, bandColor: color.0, backgroundColor: color.1, cutColor: color.2))
       }
     }
   closure: {
@@ -58,5 +59,34 @@ class StartViewModel {
     let rootVC = keyWindow?.rootViewController as! UINavigationController
     startCoordinator = StartViewCoordinator(rootVC: rootVC)
     startCoordinator.goToMaterial(basicData: basicData)
+  }
+  
+  private func getColorName(_ name: String) -> String {
+    let arrayColors = ["BEYAZ", "SİYAH", "YEŞİL", "AÇIK YEŞİL", "PETROL YEŞİLİ", "PETROL YEŞİL", "ŞEFFAF", "GRİ", "MAVİ", "AÇIK MAVİ", "KOYU MAVİ", "ELMA YEŞİLİ", "ELMA YEŞİL", "KOYU GRİ", "SARI", "TURUNCU", "HARDAL"]
+    
+    var colorName = ""
+    
+    for arrayColor in arrayColors {
+      if name.contains(arrayColor) {
+        colorName = String(arrayColor.first!) + arrayColor.dropFirst().lowercased()
+      }
+    }
+    
+    if colorName == "" {
+      colorName = "Yeşil"
+    }
+    return colorName
+  }
+  
+  private func getColor(_ name: String) -> (UIColor, UIColor, UIColor) {
+    let colorName = getColorName(name)
+    
+    guard let color = ColorSwitch(rawValue: colorName.replacingOccurrences(of: " ", with: "").lowercased().replacingOccurrences(of: "i̇", with: "i")) else { return (UIColor.systemBlue, UIColor.white, UIColor.clear) }
+    
+    let bandColor = color.bandColor
+    let backColor = color.backgroundColor
+    let cutColor = color.cutColor
+    
+    return (bandColor, backColor, cutColor)
   }
 }

@@ -13,10 +13,9 @@ class MaterialViewController: UIViewController {
  let imageView: UIImageView = {
   let imageView = UIImageView()
   imageView.isUserInteractionEnabled = true
-  imageView.backgroundColor = .white
+  imageView.backgroundColor = .clear
   imageView.translatesAutoresizingMaskIntoConstraints = false
   imageView.contentMode = .scaleToFill
-  imageView.image = UIColor(displayP3Red: 83/255, green: 165/255, blue: 154/255, alpha: 0.9).image()
   return imageView
  }()
  
@@ -30,7 +29,7 @@ class MaterialViewController: UIViewController {
  func anotherImageView(color: UIColor) -> UIImageView {
   let imageView = UIImageView()
   imageView.isUserInteractionEnabled = true
-  imageView.backgroundColor = .white
+  imageView.backgroundColor = .clear
   imageView.translatesAutoresizingMaskIntoConstraints = false
   imageView.contentMode = .scaleToFill
   imageView.image = color.image()
@@ -50,7 +49,7 @@ class MaterialViewController: UIViewController {
  
  override func viewDidLoad() {
   super.viewDidLoad()
-  self.view.backgroundColor = .lightGray
+  setupColor()
   if temp {
    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kaydet", style: .plain, target: self, action: #selector(save))
   } else {
@@ -78,7 +77,7 @@ class MaterialViewController: UIViewController {
     if temp && (i == cutArray.count - 1) {
      imageViewArray.append(anotherImageView(color: UIColor.red))
     } else {
-     imageViewArray.append(anotherImageView(color: UIColor.blue))
+     imageViewArray.append(anotherImageView(color: basicData.cutColor))
     }
     view.addSubview(imageViewArray[i-1])
 
@@ -127,6 +126,11 @@ class MaterialViewController: UIViewController {
  @objc private func createPDF() {
   viewModel = MaterialViewModel(basicData: basicData, temp: temp)
   viewModel.PDF(cut: cutArray)
+ }
+ 
+ private func setupColor() {
+  self.view.backgroundColor = basicData.backgroundColor
+  imageView.image = basicData.bandColor.image()
  }
 }
 
