@@ -10,15 +10,19 @@ class CreateViewModel: ObservableObject {
   private var coordinator: CreateViewCoordinator!
   
   func startView(rootVC: UINavigationController) {
+    saveNames()
     createVC = CreateViewController()
     rootVC.pushViewController(createVC, animated: true)
   }
   
   private func saveNames() {
     networkManagement = NetworkManagement()
-    //    networkManagement.getNames { arr in
-    //      self.dictToModel(arr)
-    //    }
+    if checkVersion(network: networkManagement) {
+      deleteRecords()
+      networkManagement.getNames { arr in
+        self.dictToModel(arr)
+      }
+    }
   }
   
   private func dictToModel(_ array: Array<Dictionary<String, Any>>) {
@@ -109,5 +113,54 @@ class CreateViewModel: ObservableObject {
     let cutColor = color.cutColor
     
     return (bandColor, backColor, cutColor)
+  }
+  
+  private func checkVersion(network: NetworkManagement) -> Bool {
+    var bool = false
+    if getLocalVersion() != getRemoteVersion(network: network) {
+      bool = true
+    }
+    return bool
+  }
+  
+  private func getLocalVersion() -> Int {
+    var count = 0
+    let context = persistence.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MaterialVersion")
+    
+    do {
+      let versions = try context.fetch(fetchRequest) as! [MaterialVersion]
+      count = versions.count
+    } catch {
+      print("Names Loading Error")
+    }
+    print("Local Number \(count)")
+    return count
+  }
+    
+  private func getRemoteVersion(network: NetworkManagement) -> Int {
+    var count = 0
+    network.getVersion { arr in
+      count = arr.count
+    }
+    print("REMOTE \(count)")
+    return count
+  }
+  
+  private func deleteRecords() {
+    let context = persistence.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BeltNames")
+    
+    do {
+      let beltNames = try context.fetch(fetchRequest) as! [BeltNames]
+      
+      for beltName in beltNames {
+        context.delete(beltName)
+      }      
+    } catch {
+      print("Names Loading Error")
+    }
   }
 }

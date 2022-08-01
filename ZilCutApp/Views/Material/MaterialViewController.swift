@@ -36,6 +36,24 @@ class MaterialViewController: UIViewController {
   return imageView
  }
  
+ let listButton: UIButton = {
+   let button = UIButton()
+   button.translatesAutoresizingMaskIntoConstraints = false
+   button.backgroundColor = UIColor(displayP3Red: 83/255, green: 165/255, blue: 154/255, alpha: 0.9)
+   button.setTitle("Listeye Dön", for: .normal)
+   button.addTarget(self, action: #selector(list), for: .touchUpInside)
+   return button
+ }()
+ 
+ let newButton: UIButton = {
+  let button = UIButton()
+  button.translatesAutoresizingMaskIntoConstraints = false
+  button.backgroundColor = UIColor(displayP3Red: 83/255, green: 165/255, blue: 154/255, alpha: 0.9)
+  button.setTitle("Yeni Oluştur", for: .normal)
+  button.addTarget(self, action: #selector(create), for: .touchUpInside)
+  return button
+}()
+ 
  init(cutArray: [Cut], basicData: BasicData, temp: Bool) {
   self.cutArray = cutArray
   self.basicData = basicData
@@ -50,18 +68,25 @@ class MaterialViewController: UIViewController {
  override func viewDidLoad() {
   super.viewDidLoad()
   setupColor()
+  
+  self.navigationItem.hidesBackButton = true
+  
   if temp {
    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kaydet", style: .plain, target: self, action: #selector(save))
+   self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "İptal", style: .plain, target: self, action: #selector(cancel))
   } else {
    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "PDF Oluştur", style: .plain, target: self, action: #selector(createPDF))
   }
+  
   setupView()
  }
  
  private func setupView() {
   view.addSubview(imageView)
-  panGestureRecognizer.addTarget(self, action: #selector(panned))
-  imageView.addGestureRecognizer(panGestureRecognizer)
+  if !(temp) {
+   panGestureRecognizer.addTarget(self, action: #selector(panned))
+   imageView.addGestureRecognizer(panGestureRecognizer)
+  }
   
   let height = UIScreen.main.bounds.height
   let width = UIScreen.main.bounds.width
@@ -101,6 +126,38 @@ class MaterialViewController: UIViewController {
     imageViewArray[i-1].heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: (cutArray[i].yEnd - cutArray[i].yStart) / cutArray[0].yEnd).isActive = true
    }
   }
+  setupButtons()
+ }
+ 
+ private func setupButtons() {
+  let height = UIScreen.main.bounds.height
+  let width = UIScreen.main.bounds.width
+  
+  view.addSubview(newButton)
+  view.addSubview(listButton)
+  
+  newButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
+  newButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.0375).isActive = true
+  newButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -(width * 0.05)).isActive = true
+  newButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: (height * 0.02)).isActive = true
+  
+  listButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3).isActive = true
+  listButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.0375).isActive = true
+  listButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: (width * 0.05)).isActive = true
+  listButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: (height * 0.02)).isActive = true
+ }
+ 
+ private func toolbarSetup() {
+  // Versiyon2'de kullanılacak.
+  self.navigationController?.isToolbarHidden = false
+
+  var items = [UIBarButtonItem]()
+
+  items.append( UIBarButtonItem(title: "Haritalama", style: .plain, target: self, action: #selector(map)) )
+  items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
+  items.append( UIBarButtonItem(title: "Geçmiş", style: .plain, target: self, action: #selector(history)) )
+
+  self.toolbarItems = items
  }
  
  @objc private func panned(_ sender: UIPanGestureRecognizer) {
@@ -126,6 +183,29 @@ class MaterialViewController: UIViewController {
  @objc private func createPDF() {
   viewModel = MaterialViewModel(basicData: basicData, temp: temp)
   viewModel.PDF(cut: cutArray)
+ }
+ 
+ @objc private func list() {
+  viewModel = MaterialViewModel(basicData: basicData, temp: temp)
+  viewModel.goToStart()
+ }
+ 
+ @objc private func create() {
+  viewModel = MaterialViewModel(basicData: basicData, temp: temp)
+  viewModel.goToCreate()
+ }
+ 
+ @objc private func cancel() {
+  viewModel = MaterialViewModel(basicData: basicData, temp: temp)
+  viewModel.goBack()
+ }
+ 
+ @objc private func map() {
+  
+ }
+ 
+ @objc private func history() {
+  
  }
  
  private func setupColor() {

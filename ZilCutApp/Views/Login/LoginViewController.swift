@@ -138,6 +138,21 @@ class LoginViewController: UIViewController {
   
   @objc private func login() {
     viewModel = LoginViewModel()
-    viewModel.login(user: usernameTextField.text!, pass: passwordTextField.text!)
+    if viewModel.login(user: usernameTextField.text!, pass: passwordTextField.text!) == false {
+      showAlert()
+    }
+  }
+  
+  private func showAlert() {
+    let alert = UIAlertController(title: "Uyarı", message: "Kullanıcı Adı veya şifre yanlış.", preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil))
+    
+    alert.popoverPresentationController?.sourceView = self.view
+    let popoverRect = CGRect(x: (self.view.bounds.width / 2) - 40, y: (self.view.bounds.height / 2) - 50,
+                             width: 100, height: 100)
+    alert.popoverPresentationController?.sourceRect = popoverRect
+    alert.popoverPresentationController?.permittedArrowDirections = .up
+    
+    self.present(alert, animated: true, completion: nil)
   }
 }

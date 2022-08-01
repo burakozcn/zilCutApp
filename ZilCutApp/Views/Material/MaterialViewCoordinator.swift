@@ -5,6 +5,9 @@ class MaterialViewCoordinator: BaseCoordinator<Void> {
   private var materialViewModel: MaterialViewModel!
   private var kesimCoordinator: KesimViewCoordinator!
   private var pdfCoordinator: PDFViewCoordinator!
+  private var createCoordinator: CreateViewCoordinator!
+  private var startCoordinator: StartViewCoordinator!
+  
   let rootVC: UINavigationController
   let basicData: BasicData
   let temp: Bool
@@ -31,6 +34,18 @@ class MaterialViewCoordinator: BaseCoordinator<Void> {
   func goToPDF(cutArray: [Cut]) -> AnyPublisher<Void, Never> {
     pdfCoordinator = PDFViewCoordinator(rootVC: rootVC, cutArray: cutArray, basicData: basicData)
     return coordinate(coordinator: pdfCoordinator)
+  }
+  
+  @discardableResult
+  func goToCreate() -> AnyPublisher<Void, Never> {
+    createCoordinator = CreateViewCoordinator(rootVC: rootVC)
+    return coordinate(coordinator: createCoordinator)
+  }
+  
+  @discardableResult
+  func goToStart() -> AnyPublisher<Void, Never> {
+    startCoordinator = StartViewCoordinator(rootVC: rootVC)
+    return coordinate(coordinator: startCoordinator)
   }
 }
 

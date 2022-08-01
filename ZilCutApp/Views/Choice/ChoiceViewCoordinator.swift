@@ -6,6 +6,7 @@ class ChoiceViewCoordinator: BaseCoordinator<Void> {
   private var choiceViewModel: ChoiceViewModel!
   private var createCoordinator: CreateViewCoordinator!
   private var startCoordinator: StartViewCoordinator!
+  private var loginCoordinator: LoginViewCoordinator!
 
   init(rootVC: UINavigationController) {
     self.rootVC = rootVC
@@ -28,5 +29,11 @@ class ChoiceViewCoordinator: BaseCoordinator<Void> {
   func goToStart() -> AnyPublisher<Void, Never> {
     startCoordinator = StartViewCoordinator(rootVC: rootVC)
     return coordinate(coordinator: startCoordinator)
+  }
+  
+  @discardableResult
+  func goToLogin(window: UIWindow) -> AnyPublisher<Void, Never> {
+    loginCoordinator = LoginViewCoordinator(window: window)
+    return coordinate(coordinator: loginCoordinator)
   }
 }

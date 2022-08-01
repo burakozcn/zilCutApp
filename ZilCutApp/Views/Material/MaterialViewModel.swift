@@ -189,6 +189,11 @@ class MaterialViewModel {
     self.restart()
   }
   
+  func goBack() {
+    deleteCut()
+    restart()
+  }
+  
   private func deleteCut() {
     let context = persistence.persistentContainer.viewContext
     
@@ -226,5 +231,27 @@ class MaterialViewModel {
     
     materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: temp)
     materialCoordinator.goToPDF(cutArray: cut)
+  }
+  
+  func goToStart() {
+    let rootVC = UIApplication.shared.connectedScenes
+      .filter({$0.activationState == .foregroundActive})
+      .compactMap({$0 as? UIWindowScene})
+      .first?.windows
+      .filter({$0.isKeyWindow}).first?.rootViewController as! UINavigationController
+    
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: temp)
+    materialCoordinator.goToStart()
+  }
+  
+  func goToCreate() {
+    let rootVC = UIApplication.shared.connectedScenes
+      .filter({$0.activationState == .foregroundActive})
+      .compactMap({$0 as? UIWindowScene})
+      .first?.windows
+      .filter({$0.isKeyWindow}).first?.rootViewController as! UINavigationController
+    
+    materialCoordinator = MaterialViewCoordinator(rootVC: rootVC, basicData: basicData, temp: temp)
+    materialCoordinator.goToCreate()
   }
 }

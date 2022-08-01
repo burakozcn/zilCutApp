@@ -44,6 +44,10 @@ class ChoiceViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Çıkış", style: .plain, target: self, action: #selector(logout))
+    self.navigationItem.hidesBackButton = true
+    
     setupView()
   }
   
@@ -87,5 +91,10 @@ class ChoiceViewController: UIViewController {
   @objc private func list() {
     choiceViewModel = ChoiceViewModel()
     choiceViewModel.goToStart()
+  }
+  
+  @objc private func logout() {
+    choiceViewModel = ChoiceViewModel()
+    choiceViewModel.logout()
   }
 }

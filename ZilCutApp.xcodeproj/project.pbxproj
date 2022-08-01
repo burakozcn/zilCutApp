@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C00D0B628146240003BB08B /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C00D0B528146240003BB08B /* BaseCoordinator.swift */; };
+		8C0631602897C95F00D6E57C /* MaterialVersion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C06315E2897C95F00D6E57C /* MaterialVersion+CoreDataClass.swift */; };
+		8C0631612897C95F00D6E57C /* MaterialVersion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C06315F2897C95F00D6E57C /* MaterialVersion+CoreDataProperties.swift */; };
 		8C0B21F8282697070042FF7D /* AlertStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0B21F7282697070042FF7D /* AlertStyle.swift */; };
 		8C0ED44F27E0AEEB0079148D /* NetworkManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0ED44E27E0AEEB0079148D /* NetworkManagement.swift */; };
 		8C13FDF028393F310046DF03 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C13FDEF28393F310046DF03 /* ChoiceViewController.swift */; };
@@ -84,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		8C00D0B528146240003BB08B /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		8C06315E2897C95F00D6E57C /* MaterialVersion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialVersion+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8C06315F2897C95F00D6E57C /* MaterialVersion+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialVersion+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8C0B21F7282697070042FF7D /* AlertStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStyle.swift; sourceTree = "<group>"; };
 		8C0ED44E27E0AEEB0079148D /* NetworkManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagement.swift; sourceTree = "<group>"; };
 		8C13FDEF28393F310046DF03 /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
@@ -367,6 +371,8 @@
 		8CE583B3278C20D000570989 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C06315E2897C95F00D6E57C /* MaterialVersion+CoreDataClass.swift */,
+				8C06315F2897C95F00D6E57C /* MaterialVersion+CoreDataProperties.swift */,
 				8C4E41A5282E351100BAEE80 /* CutRecord+CoreDataProperties.swift */,
 				8C4E41A4282E351100BAEE80 /* CutRecord+CoreDataClass.swift */,
 				8CB6C4452796BEF9002F96EB /* Cut.swift */,
@@ -536,9 +542,11 @@
 				8CBDEF7F27BA9AEF009589A5 /* MyPickerView.swift in Sources */,
 				8CFA42B3281FC835004859F7 /* Persistence.swift in Sources */,
 				8CE0FB622828536400A50B99 /* StartViewModel.swift in Sources */,
+				8C0631612897C95F00D6E57C /* MaterialVersion+CoreDataProperties.swift in Sources */,
 				8C76650F283A5258003974FC /* StartTableViewDataSource.swift in Sources */,
 				8C00D0B628146240003BB08B /* BaseCoordinator.swift in Sources */,
 				8CE0FB5428284F7200A50B99 /* KesimViewModel.swift in Sources */,
+				8C0631602897C95F00D6E57C /* MaterialVersion+CoreDataClass.swift in Sources */,
 				8CE0FB5228284F3F00A50B99 /* PDFViewCoordinator.swift in Sources */,
 				8C45B0162812DDD400BEB794 /* CreateViewController.swift in Sources */,
 				8CE43BC0278B472800F95B99 /* AppDelegate.swift in Sources */,
